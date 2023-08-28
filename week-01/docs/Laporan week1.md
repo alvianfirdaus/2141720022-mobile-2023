@@ -61,7 +61,7 @@ Setelah melakukan materi praktikum ini, mahasiswa mampu:
 
 ## 2.3.1 Langkah-langkah menjalankan dart
 1. buat file dart dengan nama berikut 2141720022-hello-world.dart<p>
-<img src = "Images/07.PNG">
+
 
     >buat kodingan seperti berikut 
     >><img src = "Images/09.PNG">
