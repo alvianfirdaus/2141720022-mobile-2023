@@ -2,7 +2,7 @@
 # **Pertemuan 1**
 
 ## **Data Mahasiswa**
-><center><img src = "Images/alvian.jpg" width ="100"></center>
+><center><img src = "docs/Images/alvian.jpg" width ="100"></center>
 
 ><p>Nama : Alvian Nur Firdaus<p>
 >Kelas : 3H<p>
