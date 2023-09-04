@@ -17,26 +17,17 @@
 ## 2.1 Tujuan Praktikum
 Setelah melakukan materi praktikum ini, mahasiswa mampu:
 
-1. Mahasiswa mampu
-menerapkan
-pembuatan variable
-di dalam Bahasa
-Pemrograman DART
-2. Mahasiswa mampu
-melakukan
-penyesuaian tipe
-data berdasar
-variabelnya di
-pemrograman DART
+1. Mahasiswa mampu menerapkan pembuatan variable di dalam BahasaPemrograman DART
+2. Mahasiswa mampu melakukan penyesuaian tipe data berdasar variabelnya di pemrograman DART
 
 <br>
 
 ## 3.1 Tugas Praktikum
 
 ## soal 1
-Modifikasilah kode pada baris 3 di VS Code atau Editor Code favorit Anda berikut ini agar mendapatkan keluaran (output) sesuai yang diminta!
+Modifikasilah kode pada baris 3 di VS Code atau Editor Code favorit Anda berikut ini agar mendapatkan keluaran (output) sesuai yang diminta!<p>
     <img src = "docs/01.PNG"><p>
-Output yang diminta:
+Output yang diminta:<p>
     <img src = "docs/02.PNG"><p>
 
 **JAWAB**
