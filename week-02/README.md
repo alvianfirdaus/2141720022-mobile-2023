@@ -31,6 +31,16 @@ Output yang diminta:<p>
     <img src = "docs/02.PNG"><p>
 
 **JAWAB**
+```dart
+//Code Program hasil Modifikasi | Alvian Nur Firdaus
+void main(){
+    for (int i=18; i>=9; i--){
+        print('Nama saya adalah Fulan, sekarang berumur $i');
+    }
+}
+```
+dengan hasil output sebagai berikut <p>
+ <img src = "docs/JawabSoal1.PNG"><p>
 
 <br>
 
@@ -38,6 +48,7 @@ Output yang diminta:<p>
 Mengapa sangat penting untuk memahami bahasa pemrograman Dart sebelum kita menggunakan framework Flutter ? Jelaskan!
 
 **JAWAB**
+Sangat Penting, Karena Dart adalah bahasa pemrograman resmi yang digunakan untuk mengembangkan aplikasi dengan Flutter. Oleh karena itu, pemahaman yang kuat tentang Dart adalah kunci untuk menguasai Framework Flutter dengan baik. Dengan pemahaman yang kuat tentang Dart, akan dapat menulis kode lebih cepat dan lebih efisien dalam Flutter, yang akan meningkatkan produktivitas Anda sebagai pengembang.
 
 <br>
 
@@ -45,7 +56,11 @@ Mengapa sangat penting untuk memahami bahasa pemrograman Dart sebelum kita mengg
 Rangkumlah materi dari codelab ini menjadi poin-poin penting yang dapat Anda gunakan untuk membantu proses pengembangan aplikasi mobile menggunakan framework Flutter.
 
 **JAWAB**
-
+- Dart adalah bahasa pemrograman berorientasi objek yang dirancang untuk pengembangan aplikasi web, mobile, dan desktop.
+- Dart memiliki sintaks yang sederhana dan mudah dipelajari, namun juga memiliki fitur-fitur yang canggih.
+- Untuk menggunakan Flutter, kita perlu memahami bahasa pemrograman Dart.
+- Dart memiliki operator-operator standar untuk manipulasi variabel, fitur-fitur OOP seperti encapsulation, inheritance, composition, abstraction, dan polymorphism, serta operator-operator aritmatika, perbandingan, dan logika yang umum digunakan dalam bahasa pemrograman lain.
+- Fleksibilitas bahasa Dart berasal dari kemampuannya untuk dieksekusi baik melalui Dart virtual machines (VMs) dengan kompilasi JIT atau AOT, serta kemampuannya untuk diubah menjadi JavaScript, yang memungkinkan pengembangan cross-platform, termasuk fitur unggulan seperti hot reload dalam pengembangan Flutter.
 <br>
 
 ## soal 4

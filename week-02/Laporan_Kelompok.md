@@ -94,7 +94,7 @@ Late variable dapat digunakan untuk menunda inisialisasi variabel sampai variabe
         //print(name);
 
         // Set nilai variabel late
-        name = "John Doe";
+        name = "Kelompok 6";
 
         // Cetak nilai variabel late
         print(name); // Output: John Doe
