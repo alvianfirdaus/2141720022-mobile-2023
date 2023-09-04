@@ -47,7 +47,7 @@ dengan hasil output sebagai berikut <p>
 ## soal 2
 Mengapa sangat penting untuk memahami bahasa pemrograman Dart sebelum kita menggunakan framework Flutter ? Jelaskan!
 
-**JAWAB**
+**JAWAB**<p>
 Sangat Penting, Karena Dart adalah bahasa pemrograman resmi yang digunakan untuk mengembangkan aplikasi dengan Flutter. Oleh karena itu, pemahaman yang kuat tentang Dart adalah kunci untuk menguasai Framework Flutter dengan baik. Dengan pemahaman yang kuat tentang Dart, akan dapat menulis kode lebih cepat dan lebih efisien dalam Flutter, yang akan meningkatkan produktivitas Anda sebagai pengembang.
 
 <br>
@@ -55,7 +55,7 @@ Sangat Penting, Karena Dart adalah bahasa pemrograman resmi yang digunakan untuk
 ## soal 3
 Rangkumlah materi dari codelab ini menjadi poin-poin penting yang dapat Anda gunakan untuk membantu proses pengembangan aplikasi mobile menggunakan framework Flutter.
 
-**JAWAB**
+**JAWAB**<p>
 - Dart adalah bahasa pemrograman berorientasi objek yang dirancang untuk pengembangan aplikasi web, mobile, dan desktop.
 - Dart memiliki sintaks yang sederhana dan mudah dipelajari, namun juga memiliki fitur-fitur yang canggih.
 - Untuk menggunakan Flutter, kita perlu memahami bahasa pemrograman Dart.
