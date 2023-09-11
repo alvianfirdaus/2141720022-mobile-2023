@@ -1,3 +1,4 @@
+//praktikum 1
 void main(){
     String test = "test2";
         if (test == "test1") {
@@ -8,9 +9,9 @@ void main(){
                     print("Something else");
                     }
         if (test == "test2") print("Test2 again");
-
-    String test = "true";
-        if (test) {
+    
+    String test2 = "true";
+        if (test2 == "true") {
             print("Kebenaran");
-        }
+    }
 }
