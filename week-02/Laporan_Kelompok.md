@@ -58,7 +58,7 @@ Null safety adalah fitur Dart yang memungkinkan Anda untuk mendeteksi dan menang
     }
 
     // Deklarasi variabel non-nullable
-    String lastName = "Smith";
+    String lastName = "Kelompok 6";
 
     // Cetak nilai variabel non-nullable
     print(lastName); // Output: Smith
