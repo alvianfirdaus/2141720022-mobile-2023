@@ -1,27 +1,33 @@
-void main() {
-  List<int> primes = generatePrime(201);
-
-  String primesString = primes.join(', ');
-  
-  print(primesString);
-  print("Nama: Alvian Nur Firdaus");
-  print("NIM: 2141720022");
-}
-
-// Pembangkitan bilangan prima menggunakan Sieve of Eratosthenes
-List<int> generatePrime(int max) {
+//Tugas
+List<int> sieveAlgoritm(int n) {
+  List<bool> isPrime = List<bool>.filled(n + 1, true);
   List<int> primes = [];
-  List<bool> isPrime = List.filled(max, true);
 
-  for (int i = 2; i < max; i++) {
-    if (isPrime[i]) {
-      primes.add(i);
-
-      for (int j = i * i; j < max; j += i) {
-        isPrime[j] = false;
+  for (int p = 2; p * p <= n; p++) {
+    if (isPrime[p]) {
+      for (int i = p * p; i <= n; i += p) {
+        isPrime[i] = false;
       }
     }
   }
 
+  for (int i = 2; i <= n; i++) {
+    if (isPrime[i]) {
+      primes.add(i);
+    }
+  }
+
   return primes;
+}
+
+void main() {
+  int n = 201; 
+  String nama = "Alvian Nur Firdaus";
+  String nim = "2141720022";
+  List<int> primeNumbers = sieveAlgoritm(n);
+
+  print("Bilangan prima dari 2 hingga $n adalah:");
+  print(primeNumbers);
+  print("Nama : $nama");
+  print("NIM : $nim");
 }
