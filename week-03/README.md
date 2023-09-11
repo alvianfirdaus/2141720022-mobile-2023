@@ -247,10 +247,12 @@ Berikut tambahan video materi terkait .<p>
 ### **Tugas Praktikum**
 1. Silakan selesaikan Praktikum 1 sampai 3, lalu dokumentasikan berupa screenshot hasil pekerjaan beserta penjelasannya!<p>
 
-**Jawab**<p>
-- [Praktikum 1 (klik)](#praktikum-1-menerapkan-control-flows-ifelse)
-- [Praktikum 2 (klik)](#praktikum-2-menerapkan-perulangan-while-dan-do-while)
-- [Praktikum 3 (klik)](#praktikum-3-praktikum-3-menerapkan-perulangan-for-dan-break-continue)
+>**Jawab**<p>
+> Sudah saya jawab dan jelaskan pada praktikum 1, 2 dan 3 tadi diatas atau juga bisa mengklik link dibawah kemudia diarahkan keatas secara otomatis
+>- [Praktikum 1 (klik)](#praktikum-1-menerapkan-control-flows-ifelse)
+>- [Praktikum 2 (klik)](#praktikum-2-menerapkan-perulangan-while-dan-do-while)
+>- [Praktikum 3 (klik)](#praktikum-3-praktikum-3-menerapkan-perulangan-for-dan-break-continue)<p>
+> 
 <p>
 
 2. Buatlah sebuah program yang dapat menampilkan bilangan prima dari angka 0 sampai 201 menggunakan Dart. Ketika bilangan prima ditemukan, maka tampilkan nama lengkap dan NIM Anda.<p>
