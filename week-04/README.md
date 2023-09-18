@@ -50,10 +50,9 @@ print(list[1]);
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan!
 
 **JAWAB**<p>
-tessss<p>
+Dari hasil eksekusi pada langkah 1 diatas dihasilkan output seperti gambar dibawah ini<p>
 <img src = "docs/praktikum1_01.PNG"><p>
-tes tes<p>
-<img src = "docs/praktikum1_02.PNG"><p>
+Penjelasan dari kode pada langkah 1 diatas adalah membuat list dengan tiga angka, memeriksa dan mencetak panjang list serta nilai elemen kedua, mengubah elemen kedua, dan kembali memeriksa serta mencetak nilai elemen kedua yang telah diubah. Ini adalah contoh sederhana penggunaan list dan asertasi dalam bahasa Dart.<p>
 
 ### **Langkah 3**
 Ubah kode pada langkah 1 menjadi variabel final yang mempunyai index = 5 dengan default value = null. Isilah nama dan NIM Anda pada elemen index ke-1 dan ke-2. Lalu print dan capture hasilnya.
@@ -61,9 +60,19 @@ Ubah kode pada langkah 1 menjadi variabel final yang mempunyai index = 5 dengan 
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki.
 
 **JAWAB**<p>
-hhhh<p>
-<img src = "docs/praktikum1_03.PNG"><p>
-hhh
+
+```dart
+//praktikum 1
+void main(){
+    List<String?> list = List.filled(5, null);
+    list[1] = 'Alvian Nur Firdaus';
+    list[2] = '2141720022';
+    print(list);
+}
+```
+Dengan hasil output sebagai berikut <p>
+<img src = "docs/praktikum1_02.PNG"><p>
+kode tersebut sebuah list dengan nama list yang memiliki kapasitas 5 elemen awalnya diisi dengan nilai null. Kemudian, program mengganti nilai elemen ke-1 dari list dengan 'Alvian Nur Firdaus' dan nilai elemen ke-2 dengan '2141720022'.<p>
 
 
 >**Catatan:**<p>
@@ -87,8 +96,9 @@ print(halogens);
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
 **JAWAB**<p>
-hhhhh<p>
+Dari hasil eksekusi pada langkah 1 diatas dihasilkan output seperti gambar dibawah ini<p>
 <img src = "docs/praktikum2_01.PNG"><p>
+Pada bagian tersebut, sebuah variabel halogens dibuat dan diinisialisasi sebagai Set dengan elemen-elemen 'fluorine', 'chlorine', 'bromine', 'iodine', dan 'astatine'. Set adalah tipe data yang mengandung elemen-elemen unik, sehingga tidak ada duplikat dalam Set.<p>
 
 ### **Langkah 3**
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
@@ -108,7 +118,7 @@ Dokumentasikan code dan hasil di console, lalu buat laporannya.
 
 **JAWAB**<p>
 hhhhh<p>
-<img src = "docs/praktikum2_04.PNG"><p>
+<img src = "docs/praktikum2_02.PNG"><p>
 hhhhhhh<p>
 
 ```dart
@@ -150,9 +160,13 @@ print(nobleGases);
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
 **JAWAB**<p>
-hhhh<p>
+Dari hasil eksekusi pada langkah 1 diatas dihasilkan output seperti gambar dibawah ini<p>
 <img src = "docs/praktikum3_01.PNG"><p>
-hhhh
+Kode pemrograman Dart di atas mengilustrasikan penggunaan tipe data Map. <p>
+Variabel gifts adalah sebuah Map yang memiliki tiga pasangan key-value:'first' adalah key dengan value'partridge',  'second' adalah key dengan value 'turtledoves', 'fifth' adalah key dengan value 1.
+Ini menunjukkan bahwa dalam Map, key dan value dapat berupa tipe data String dan int.<p>
+
+Variabel nobleGases adalah Map lain yang memiliki tiga pasangan key-value: 2 adalah key dengan value 'helium', 10 adalah key dengan value 'neon', 18 adalah key dengan value 2. Dalam hal ini, key dan value juga dapat berupa tipe data int dan String, menunjukkan fleksibilitas tipe data dalam Map Dart.
 
 ### **Langkah 3**
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.

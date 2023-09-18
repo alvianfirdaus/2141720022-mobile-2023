@@ -1,5 +1,5 @@
 //praktikum 3
-void main(){
+void main () {
     var gifts = {
         // Key:    Value
         'first': 'partridge',
