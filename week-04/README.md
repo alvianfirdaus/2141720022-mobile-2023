@@ -440,9 +440,8 @@ print(record)
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
 **JAWAB**<p>
-hhhh<p>
+Awalnya terjadi eror karena kurang penambahan ';' pada setelah perintah print, kemudian saya menambahkanya dan didapati hasil seperti berikut ini <p>
 <img src = "docs/praktikum5_01.PNG"><p>
-hhhh
 
 ### **Langkah 3**
 Tambahkan kode program berikut di luar scope void main(), lalu coba eksekusi (Run) kode Anda.
@@ -457,9 +456,22 @@ Tambahkan kode program berikut di luar scope void main(), lalu coba eksekusi (Ru
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Gunakan fungsi tukar() di dalam main() sehingga tampak jelas proses pertukaran value field di dalam Records.
 
 **JAWAB**<p>
-hhhh<p>
-<img src = "docs/praktikum5_01.PNG"><p>
-hhhh
+berikut setelah saya tambahkan kode diatas
+
+```dart
+(int, int) tukar((int, int) record) {
+  var (a, b) = record;
+  return (b, a);
+}
+
+void main() {
+  var record = (1, 2);
+  print(record);
+  print(tukar(record));
+}
+```
+berikut adalah hasil output setelah saya menabahkan kode diatas dan menghasilkan output seperti berikut<p>
+<img src = "docs/praktikum5_02.PNG"><p>
 
 ### **Langkah 4**
 Tambahkan kode program berikut di dalam scope void main(), lalu coba eksekusi (Run) kode Anda.
@@ -473,9 +485,18 @@ print(mahasiswa);
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Inisialisasi field nama dan NIM Anda pada variabel record mahasiswa di atas. Dokumentasikan hasilnya dan buat laporannya!
 
 **JAWAB**<p>
-hhhh<p>
-<img src = "docs/praktikum5_01.PNG"><p>
-hhhh
+setelah saya menjalankan kode program tersebut terjadi eror seperti berikut<p>
+<img src = "docs/praktikum5_03.PNG"><p>
+Hal tersebut terjadi karena  nilainya belum diinisialisasi, berikut setelah saya tambahkan kode untuk inisialisasi
+
+```dart
+void main() {
+  (String, int) mahasiswa = ('Alvian Nur Firdaus', 2141720022);
+  print(mahasiswa);
+}
+```
+maka didapati hasil output seperti berikut <p>
+<img src = "docs/praktikum5_04.PNG"><p>
 
 ### **Langkah 5**
 Tambahkan kode program berikut di dalam scope void main(), lalu coba eksekusi (Run) kode Anda.
@@ -492,9 +513,23 @@ print(mahasiswa2.$2); // Prints 'last'
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Gantilah salah satu isi record dengan nama dan NIM Anda, lalu dokumentasikan hasilnya dan buat laporannya!
 
 **JAWAB**<p>
-hhhh<p>
-<img src = "docs/praktikum5_01.PNG"><p>
-hhhh
+Setelah saya menambahkan kode program diatas tidak terjadi eror dan menghasilkan output sebagai berikut <p>
+<img src = "docs/praktikum5_05.PNG"><p>
+kemudian saya melakukan modifikasi kode program dengan mengganti salah satu isi record dengan nama dan Nim saya menjadi sepeperti dibawah ini
+
+```dart
+void main() {
+  var mahasiswa2 = ('Alvian Nur Firdaus', a: 2141720022, b: true, 'last');
+
+  print(mahasiswa2.$1);
+  print(mahasiswa2.a);
+  print(mahasiswa2.b);
+  print(mahasiswa2.$2);
+}
+```
+Dan menghasilkan output seperti gambar dibawah ini <p>
+<img src = "docs/praktikum5_06.PNG"><p>
+
 
 ------
 <br>
@@ -515,32 +550,148 @@ hhhh
 2. Jelaskan yang dimaksud Functions dalam bahasa Dart!<p>
 
     >**Jawab**<p>
-    >hhhh<p>
+    >Fungsi dalam bahasa Dart adalah blok kode yang dapat digunakan untuk melakukan tugas tertentu. Mereka menerima argumen sebagai input, melakukan operasi pada argumen tersebut, dan kemudian mengembalikan nilai sebagai output. Fungsi biasanya dideklarasikan dengan kata kunci void jika tidak mengembalikan nilai atau dengan tipe data yang sesuai jika mengembalikan nilai.<p>
 
 3. Jelaskan jenis-jenis parameter di Functions beserta contoh sintaksnya!<p>
 
     >**Jawab**<p>
-    >hhhh<p>
+    >Berikut adalah jenis-jenis parameter<p>
+    >**Parameter Wajib**
+
+    ```dart
+    void fun(params){
+    ...
+    }
+    fun(args)
+    ```
+
+    >**Parameter default**
+    ```dart
+    void fun(params="default"){
+    ...
+    }
+
+    fun(args) 
+    ```
+    >**Parameter named**
+    ```dart
+    void fun(param1,param2){
+    ...
+    }
+    fun(param1:arg,param2:arg)
+    ```
+    >**Parameter rest**
+    ```dart
+    void fun(...params){
+    ...
+    }
+    fun(arg1,arg2,arg3)
+    ```
 
 4. Jelaskan maksud Functions sebagai first-class objects beserta contoh sintaknya!<p>
 
     >**Jawab**<p>
-    >hhhh<p>
+    >first-class objects (objek kelas pertama) dalam bahasa pemrograman seperti Dart berarti fungsi dianggap sebagai nilai yang dapat dioperasikan dengan cara yang sama seperti tipe data lainnya, seperti integer, string, atau objek<p>
+
+    >Function dapat disimpan sebagai variable<p>
+    ```dart
+    void main() {
+        var greet = () => print("Hello");
+
+        greet();
+    }
+    ```
+    >Function sebagai parameter function<p>
+    ```dart
+    void sayHello(Function greeting) {
+        greeting();
+        }
+
+        void main() {
+        sayHello(() => print("Hello"));
+    }
+    ```
+    >Function sebagai return function<p>
+    ```dart
+    Function getGreeting() {
+        return () => print("Hello");
+        }
+
+        void main() {
+        getGreeting()();
+    }
+    ```
 
 5. Apa itu Anonymous Functions? Jelaskan dan berikan contohnya!<p>
 
     >**Jawab**<p>
-    >hhhh<p>
+    >Anonymous functions (fungsi anonim) dalam Dart adalah fungsi yang tidak memiliki nama. Atau juga dikenal sebagai lambda functions atau closures. Fungsi anonim dapat digunakan untuk mengekspresikan logika sederhana tanpa harus mendefinisikan fungsi dengan nama<p>
+
+    > Berikut contoh penggunaan anonymous functions di Dart yaitu Anonymous Function Sebagai Parameter Fungsi:
+    ```dart
+    void main() {
+        // Menggunakan anonymous function sebagai parameter
+        var list = [1, 2, 3, 4, 5];
+        var hasil = list.map((item) {
+            return item * 2;
+        });
+        
+        print(hasil.toList()); // Output: [2, 4, 6, 8, 10]
+    }
+    ```
 
 6. Jelaskan perbedaan Lexical scope dan Lexical closures! Berikan contohnya!<p>
 
     >**Jawab**<p>
-    >hhhh<p>
+    >**Lexical Scope (Lingkup Leksikal):**<p>
+    > Lexical scope mengacu pada cara variabel didefinisikan dan diakses dalam kode berdasarkan penempatan fisiknya dalam kode sumber. variabel hanya dapat diakses dari dalam lingkup tempat variabel tersebut dideklarasikan atau dalam lingkup yang lebih dalam (nested).<p>
+    berikut contohnya
+
+    ```dart
+    void main() {
+        var outerVar = 10;
+
+        void nestedFunction() {
+            print(outerVar); // Variabel outerVar dapat diakses dalam nestedFunction
+        }
+
+        nestedFunction();
+    }
+    ```
+
+    >**Lexical Closures (Penutupan Leksikal):**<p>
+    > Lexical closures merujuk pada kemampuan sebuah fungsi untuk mengakses variabel yang berada di lingkup luar atau lingkup tempat fungsi tersebut dideklarasikan<p>
+    berikut contohnya
+    ```dart
+    Function createClosure() {
+        var outerVar = 10;
+
+        return () {
+            print(outerVar); // Fungsi ini merupakan closure yang dapat mengakses outerVar
+        };
+        }
+
+        void main() {
+        var closure = createClosure();
+        closure(); // Output: 10
+    }
+    ```
 
 7. Jelaskan dengan contoh cara membuat return multiple value di Functions!<p>
 
     >**Jawab**<p>
-    >hhhh<p>
+    >Untuk memmbuat return multiple value, kita dapat memanfaatkan beberapa cara. Salah satunya adalah memanfaatkan Record sebagai berikut<p>
+    ```dart
+    (String, int) getData() {
+        return ('Wildan Hafidz Mauludin', 2141720007);
+    }
+    void main() {
+        var (nama, nim) = getData();
+
+        print(nama);
+        print(nim);
+    }
+    ```
 
 8. Kumpulkan berupa link commit repo GitHub pada tautan yang telah disediakan di grup Telegram!<p>
 
