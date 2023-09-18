@@ -117,17 +117,26 @@ Apa yang terjadi ? Jika terjadi error, silakan perbaiki namun tetap menggunakan 
 Dokumentasikan code dan hasil di console, lalu buat laporannya.
 
 **JAWAB**<p>
-hhhhh<p>
+Berikut adalah hasil output setelah menambahkan kode program diatas<p>
 <img src = "docs/praktikum2_02.PNG"><p>
-hhhhhhh<p>
+Kemudian saya menambahkan kode untuk menambahkan elemen nama dan NIM pada variabel Set: pada kode program diatas hingga menjadi sperti dibawah ini<p>
 
 ```dart
 void main() {
-  
+    var names1 = <String>{};
+    Set<String> names2 = {};
+    var names3 = {};
+
+    names1.add('Alvian Nur Firdaus');
+    names2.addAll({'Alvian Nur Firdaus', '2141720022'});
+
+    print(names1);
+    print(names2);
+    print(names3);
 }
 ```
 berikut adalah hasil outputnya<p>
-<img src = "docs/praktikum2_05.PNG"><p>
+<img src = "docs/praktikum2_03.PNG"><p>
 
 ----
 <br>
@@ -188,9 +197,54 @@ Apa yang terjadi ? Jika terjadi error, silakan perbaiki.
 Tambahkan elemen nama dan NIM Anda pada tiap variabel di atas (gifts, nobleGases, mhs1, dan mhs2). Dokumentasikan hasilnya dan buat laporannya!
 
 **JAWAB**<p>
-hhhhh<p>
-<img src = "docs/praktikum3_03.PNG"><p>
-hhhhh
+Setelah penambahan kode program diatas dijalankan hasil outputnya masih sama seperti sebelumnya karena tidak ada kode yang mengubah outputnya, seperti berikut ini<p>
+<img src = "docs/praktikum3_01.PNG"><p>
+maka perlu menambahkan kode untuk elemen nama dan nim pada map seperti berikut ini
+
+```dart
+//praktikum 3
+void main () {
+    var gifts = {
+        // Key:    Value
+        'first': 'partridge',
+        'second': 'turtledoves',
+        'fifth': 1
+    };
+    
+    var nobleGases = {
+        2: 'helium',
+        10: 'neon',
+        18: 2,
+    };
+    
+    // print(gifts);
+    // print(nobleGases);
+
+    var mhs1 = Map<String, String>();
+    gifts['first'] = 'partridge';
+    gifts['second'] = 'turtledoves';
+    gifts['fifth'] = 'golden rings';
+
+    var mhs2 = Map<int, String>();
+    nobleGases[2] = 'helium';
+    nobleGases[10] = 'neon';
+    nobleGases[18] = 'argon';
+
+    mhs1['nama'] = 'Alvian Nur Firdaus';
+    mhs1['nim'] = '2141720022';
+
+    mhs2[1] = 'Alvian Nur Firdaus';
+    mhs2[2] = '2141720022';
+
+    print(gifts);
+    print(nobleGases);
+    print(mhs1);
+    print(mhs2);
+}
+```
+
+dengan hasil output sebagai berikut<p>
+<img src = "docs/praktikum3_02.PNG"><p>
 
 ----
 <br>
@@ -213,9 +267,23 @@ print(list2.length);
 Silakan coba eksekusi (Run) kode pada langkah 1 tersebut. Apa yang terjadi? Jelaskan! Lalu perbaiki jika terjadi error.
 
 **JAWAB**<p>
-hhhh<p>
+Terjadi eror seperti gambar dibawah ini <p>
 <img src = "docs/praktikum4_01.PNG"><p>
-hhhh
+hal ini terjadi karena Nama variabel list yang digunakan di baris ke-3 seharusnya list1 (tidak list).
+Perubahan menggunakan operator spread (...) di baris ke-4 seharusnya var list2 = [0, ...list1]; (bukan list), dan berikut adalah hasil perbaikan kode programnya.
+
+```dart
+void main() {
+  var list1 = [1, 2, 3];
+  var list2 = [0, ...list1];
+  print(list1);
+  print(list2);
+  print(list2.length);
+}
+```
+dan berikut hasil outputnya setelah diperbaiki<p>
+ <img src = "docs/praktikum4_02.PNG"><p>
+
 
 ### **Langkah 3**
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
@@ -232,9 +300,51 @@ Apa yang terjadi ? Jika terjadi error, silakan perbaiki.
 Tambahkan variabel list berisi NIM Anda menggunakan Spread Operators. Dokumentasikan hasilnya dan buat laporannya!
 
 **JAWAB**<p>
-hhhhh<p>
+Akan terjadi eror seperti gambar dibawah ini<p>
 <img src = "docs/praktikum4_03.PNG"><p>
-hhhhh
+Maka kemudian saya memperbaiki kode program menjadi seperti dibawah ini
+
+```dart
+void main(){
+    List<int?> list = [1, 2, 3];
+    var list2 = [0, ...list];
+    print(list);
+    print(list2);
+    print(list2.length);
+
+    list = [1, 2, null];
+    print(list);
+    var list3 = [0, ...list];
+    print(list3.length);
+}
+```
+Dan eror pun sudah tidak ada dan menghasilkan output seperti gambar dibawah ini<p>
+<img src = "docs/praktikum4_04.PNG"><p>
+kemudian saya menambahkan variabel list berisi NIM Anda menggunakan Spread Operators sesuai intruksi menjadi seperti dibawah ini
+
+```dart
+void main(){
+    List<int?> list = [1, 2, 3];
+    var list2 = [0, ...list];
+    print(list);
+    print(list2);
+    print(list2.length);
+
+    list = [1, 2, null];
+    print(list);
+    var list3 = [0, ...list];
+    print(list3.length);
+
+    var nimA = [2, 1, 4, 1, 7];
+    var nimB = [2, 0, 0, 2, 2];
+    var list4 = [...nimA, ...nimB];
+    print(list4);
+    print(list4.length);
+}
+```
+Dan Hasil outputnya adalah sebagai berikut<p>
+<img src = "docs/praktikum4_05.PNG"><p>
+
 
 ### **Langkah 4**
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
@@ -247,9 +357,22 @@ print(nav);
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Tunjukkan hasilnya jika variabel promoActive ketika true dan false.
 
 **JAWAB**<p>
-hhhhh<p>
-<img src = "docs/praktikum4_03.PNG"><p>
-hhhhh
+Hasilnya adalah terjadi eror seperti berikut <p>
+<img src = "docs/praktikum4_06.PNG"><p>
+hal ini terjadi error karena variable promoActive tidak didefinisikan. Kemudian saya mengubahnya menjadi seperti berikut:
+
+```dart
+void main(){
+    var promoActive = true;
+    var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
+    print(nav);
+}
+```
+Maka akan menghasilkan output seperti berikut <p>
+promoActive = true <p>
+<img src = "docs/praktikum4_07.PNG"><p>
+promoActive = false <p>
+<img src = "docs/praktikum4_08.PNG"><p>
 
 ### **Langkah 5**
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
@@ -262,9 +385,23 @@ print(nav2);
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Tunjukkan hasilnya jika variabel login mempunyai kondisi lain.
 
 **JAWAB**<p>
-hhhhh<p>
-<img src = "docs/praktikum4_03.PNG"><p>
-hhhhh
+terjadi eror seperti gambar dibawah<p>
+<img src = "docs/praktikum4_09.PNG"><p>
+hal tersebut terjadi karena variable login tidak didefinisikan. Kemudian saya mengubahnya menjadi seperti berikut:
+
+```dart
+void main(){
+    String login = 'Manager';
+
+    var nav2 = ['Home','Furniture','Plants',if (login case 'Manager') 'Inventory'];
+    print(nav2);
+}
+```
+maka hasil outputnya akan menjadi seperti berikut <p>
+Ketika dijalankan dengan login = 'Manager'<p>
+<img src = "docs/praktikum4_10.PNG"><p>
+Ketika dijalankan dengan login = 'User'<p>
+<img src = "docs/praktikum4_11.PNG"><p>
 
 ### **Langkah 6**
 Tambahkan kode program berikut, lalu coba eksekusi (Run) kode Anda.
@@ -278,9 +415,9 @@ print(listOfStrings);
 Apa yang terjadi ? Jika terjadi error, silakan perbaiki. Jelaskan manfaat Collection For dan dokumentasikan hasilnya.
 
 **JAWAB**<p>
-hhhhh<p>
-<img src = "docs/praktikum4_03.PNG"><p>
-hhhhh
+Kode program diatas menghasilkan output seperti berikut<p>
+<img src = "docs/praktikum4_12.PNG"><p>
+Pada contoh kode Dart tersebut, "collection for" digunakan untuk membuat daftar listOfStrings dengan mengulangi elemen-elemen dalam listOfInts dan menggabungkannya dengan tanda pagar (#). Hasilnya adalah listOfStrings berisi ['#1', '#2', '#3'], yang kemudian diperiksa apakah elemen kedua adalah '#2' menggunakan assert. Terakhir, isi dari listOfStrings dicetak ke konsol.
 
 ------
 <br>

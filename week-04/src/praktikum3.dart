@@ -13,6 +13,27 @@ void main () {
         18: 2,
     };
     
+    // print(gifts);
+    // print(nobleGases);
+
+    var mhs1 = Map<String, String>();
+    gifts['first'] = 'partridge';
+    gifts['second'] = 'turtledoves';
+    gifts['fifth'] = 'golden rings';
+
+    var mhs2 = Map<int, String>();
+    nobleGases[2] = 'helium';
+    nobleGases[10] = 'neon';
+    nobleGases[18] = 'argon';
+
+    mhs1['nama'] = 'Alvian Nur Firdaus';
+    mhs1['nim'] = '2141720022';
+
+    mhs2[1] = 'Alvian Nur Firdaus';
+    mhs2[2] = '2141720022';
+
     print(gifts);
     print(nobleGases);
+    print(mhs1);
+    print(mhs2);
 }
