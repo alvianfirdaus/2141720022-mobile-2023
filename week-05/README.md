@@ -1,6 +1,6 @@
 # **Laporan Praktikum**
 # **Pertemuan 5**
-### ** Flutter Fundamental Bagian 1**
+### **Flutter Fundamental Bagian 1**
 ------
 
 
@@ -516,6 +516,7 @@ dan berikut adalah hasil modifikasi kode main.dart diatas<p>
     }
     ```
     >kemudian menghasilkan output seperti berikut<p>
+    ><img src = "docs/jawabantugas2b.PNG"><p><p>
     ><img src = "docs/jawabantugas2.gif"><p><p>
 
 3. Selesaikan Codelabs: Your first Flutter app, lalu buatlah laporan praktikumnya dan push ke repository GitHub Anda!<p>
@@ -524,7 +525,8 @@ dan berikut adalah hasil modifikasi kode main.dart diatas<p>
     >Saya Sudah menyeleasikan tantangan tersebut dan saya simpan pada repositori saya berikut :<p>
     >- [Repository codelabs : Your Firs Flutter app (klik)](/week-05/src/namer_app/)
     >kemudian codelab tersebut menghasilkan output seperti berikut<p>
-    ><img src = "docs/jawabansoal3.gif"><p><p>
+    >><img src = "docs/jawabantugas3.PNG"><p>
+    ><img src = "docs/jawabansoal3.gif"><p>
     
 
 4. README.md berisi: capture hasil akhir tiap praktikum (side-by-side, bisa juga berupa file GIF agar terlihat proses perubahan ketika ada aksi dari pengguna) di browser dan perangkat fisik (device) dengan menampilkan NIM dan Nama Anda sebagai ciri pekerjaan Anda. Jika mode developer di perangkat HP Anda belum aktif, silakan cari di internet cara mengaktifkannya!<p>
