@@ -287,7 +287,7 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 dan berikut adalah hasil modifikasi kode main.dart diatas<p>
 <img src = "docs/praktikum4_3.PNG"><p>
-<img src = "docs/praktikum4_3.gif"><p>
+<img src = "docs/refisi1.gif"><p>
 
 ### **Langkah 4 Dialog Widget**
 Dialog widget pada flutter memiliki dua jenis dialog yaitu AlertDialog dan SimpleDialog.<p>Ubah isi kode main.dart seperti berikut.
@@ -352,7 +352,7 @@ showAlertDialog(BuildContext context) {
 ```
 dan berikut adalah hasil modifikasi kode main.dart diatas<p>
 <img src = "docs/praktikum4_4.PNG"><p>
-<img src = "docs/praktikum4_4.gif"><p>
+<img src = "docs/revisi2.gif"><p>
 
 ### **Langkah 5 Input dan Selection Widget**
 Flutter menyediakan widget yang dapat menerima input dari pengguna aplikasi yaitu antara lain Checkbox, Date and Time Pickers, Radio Button, Slider, Switch, TextField.<p> Contoh penggunaan TextField widget adalah sebagai berikut:
@@ -380,7 +380,7 @@ class MyApp extends StatelessWidget {
 ```
 dan berikut adalah hasil modifikasi kode main.dart diatas<p>
 <img src = "docs/praktikum4_5.PNG"><p>
-<img src = "docs/praktikum4_5.gif"><p>
+<img src = "docs/revisi4.gif"><p>
 
 ### **Langkah 6 Date and Time Pickers**
 Date and Time Pickers termasuk pada kategori input dan selection widget, berikut adalah contoh penggunaan Date and Time Pickers.
@@ -462,7 +462,7 @@ class _MyHomePageState extends State<MyHomePage> {
 ```
 dan berikut adalah hasil modifikasi kode main.dart diatas<p>
 <img src = "docs/praktikum4_6a.PNG"><p>
-<img src = "docs/praktikum4_6.gif"><p>
+<img src = "docs/revisi3.gif"><p>
 
 ------
 <br>
@@ -526,7 +526,7 @@ dan berikut adalah hasil modifikasi kode main.dart diatas<p>
     >- [Repository codelabs : Your Firs Flutter app (klik)](/week-05/src/namer_app/)
     >kemudian codelab tersebut menghasilkan output seperti berikut<p>
     >><img src = "docs/jawabantugas3.PNG"><p>
-    ><img src = "docs/jawabansoal3.gif"><p>
+    ><img src = "docs/revisi5.gif"><p>
     
 
 4. README.md berisi: capture hasil akhir tiap praktikum (side-by-side, bisa juga berupa file GIF agar terlihat proses perubahan ketika ada aksi dari pengguna) di browser dan perangkat fisik (device) dengan menampilkan NIM dan Nama Anda sebagai ciri pekerjaan Anda. Jika mode developer di perangkat HP Anda belum aktif, silakan cari di internet cara mengaktifkannya!<p>
