@@ -155,386 +155,178 @@ Widget titleSection = Container(
 -----
 <br>
 
-### **Praktikum 2"**
+### **Praktikum 2 Implementasi button row"**
+Selesaikan langkah-langkah praktikum berikut ini dengan melanjutkan dari praktikum sebelumnya.
 
+### **Langkah 1 Buat method Column _buildButtonColumn**
+Bagian tombol berisi 3 kolom yang menggunakan tata letak yang sama—sebuah ikon di atas baris teks. Kolom pada baris ini diberi jarak yang sama, dan teks serta ikon diberi warna primer.<p>
 
->**Perhatian:** <p>
+Karena kode untuk membangun setiap kolom hampir sama, buatlah metode pembantu pribadi bernama buildButtonColumn(), yang mempunyai parameter warna, Icon dan Text, sehingga dapat mengembalikan kolom dengan widgetnya sesuai dengan warna tertentu.<p>
 
-### **Langkah 1 **
-
-### **Langkah 11**
-
-
-<img src = "docs/praktikum2_11.PNG"><p>
-
->**Perhatian:** <p> 
-
-### **Langkah 12**
-
-<img src = "docs/praktikum2_12.PNG"><p>
-
->**Perhatian:**<p> 
-----
-<br>
-
-### **Praktikum 3: "**
-
-### **Langkah 1 Text Widget**
-Buat folder baru basic_widgets di dalam folder lib. Kemudian buat file baru di dalam basic_widgets dengan nama text_widget.dart. Ketik atau salin kode program berikut ke project hello_world Anda pada file text_widget.dart.
-
-```dart
-import 'package:flutter/material.dart';
-
-class MyTextWidget extends StatelessWidget {
-  const MyTextWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      "Nama saya Alvian Nur Firdaus, sedang belajar Pemrograman Mobile",
-      style: TextStyle(color: Colors.red, fontSize: 14),
-      textAlign: TextAlign.center);
-  }
-}
-```
->**Perhatian:**<p> Gantilah teks Fulan dengan nama lengkap Alvian Nur Firdaus.
-
-Lakukan import file text_widget.dart ke main.dart, lalu ganti bagian text widget dengan kode di atas. Maka hasilnya seperti gambar berikut. Screenshot hasil milik Anda, lalu dibuat laporan pada file README.md.
-
-<img src = "docs/praktikum3_1.PNG"><p>
-
-### **Langkah 2 Image Widget**
-Buat sebuah file image_widget.dart di dalam folder basic_widgets dengan isi kode berikut.
-
-```dart
-import 'package:flutter/material.dart';
-
-class MyImageWidget extends StatelessWidget {
-  const MyImageWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Image(
-      image: AssetImage("logo_polinema.jpg")
-    );
-  }
-}
-```
-Lakukan penyesuaian asset pada file pubspec.yaml dan tambahkan file logo Anda di folder assets project hello_world.
-
-```dart
-flutter:
-  assets:
-     - logo_polinema.jpg
-```
-menjadi seperti berikut<p>
-<img src = "docs/praktikum3_2a.PNG"><p>
-Jangan lupa sesuaikan kode dan import di file main.dart kemudian akan tampil gambar seperti berikut.
-<img src = "docs/praktikum3_2.PNG"><p>
-
-----
-<br>
-
-### **Praktikum 4: Menerapkan Widget Material Design dan iOS Cupertino**
-Selesaikan langkah-langkah praktikum berikut ini dengan melanjutkan project hello_world Anda. Lakukan langkah yang sama seperti pada Praktikum 3, yaitu setiap widget dibuat file sendiri lalu import ke main.dart dan screenshot hasilnya.
-
-### **Langkah 1 Cupertino Button dan Loading Bar**
-Buat file di basic_widgets > loading_cupertino.dart. Import stateless widget dari material dan cupertino. Lalu isi kode di dalam method Widget build adalah sebagai berikut.
-
-```dart
-return MaterialApp(
-      home: Container(
-        margin: const EdgeInsets.only(top: 30),
-        color: Colors.white,
-        child: Column(
-          children: <Widget>[
-            CupertinoButton(
-              child: const Text("Contoh button"),
-              onPressed: () {},
-            ),
-            const CupertinoActivityIndicator(),
-          ],
-        ),
-      ),
-    );
-```
-
-### **Langkah 2 Floating Action Button (FAB)**
-Button widget terdapat beberapa macam pada flutter yaitu ButtonBar, DropdownButton, TextButton, FloatingActionButton, IconButton, OutlineButton, PopupMenuButton, dan ElevatedButton.<p>
-
-Buat file di basic_widgets > fab_widget.dart. Import stateless widget dari material. Lalu isi kode di dalam method Widget build adalah sebagai berikut.
-
-```dart
-return MaterialApp(
-      home: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            // Add your onPressed code here!
-          },
-          child: const Icon(Icons.thumb_up),
-          backgroundColor: Colors.pink,
-        ),
-      ),
-    );
-```
-
-### **Langkah 3 Scaffold Widget**
-Scaffold widget digunakan untuk mengatur tata letak sesuai dengan material design.<p>Ubah isi kode main.dart seperti berikut.
-
-```dart
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: const MyHomePage(title: 'My Increment App'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 50.0,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment Counter',
-        child: const Icon(Icons.add),
-      ), 
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    );
-  }
-}
-```
-dan berikut adalah hasil modifikasi kode main.dart diatas<p>
-<img src = "docs/praktikum4_3.PNG"><p>
-<img src = "docs/refisi1.gif"><p>
-
-### **Langkah 4 Dialog Widget**
-Dialog widget pada flutter memiliki dua jenis dialog yaitu AlertDialog dan SimpleDialog.<p>Ubah isi kode main.dart seperti berikut.
-
+**lib/main.dart (_buildButtonColumn)**
 ```dart
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: MyLayout(),
-      ),
-    );
+    // ···
   }
-}
 
-class MyLayout extends StatelessWidget {
-  const MyLayout({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        child: const Text('Show alert'),
-        onPressed: () {
-          showAlertDialog(context);
-        },
-      ),
-    );
-  }
-}
-
-showAlertDialog(BuildContext context) {
-  // set up the button
-  Widget okButton = TextButton(
-    child: const Text("OK"),
-    onPressed: () {
-      Navigator.pop(context);
-    },
-  );
-
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: const Text("My title"),
-    content: const Text("This is my message."),
-    actions: [
-      okButton,
-    ],
-  );
-
-  // show the dialog
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return alert;
-    },
-  );
-}
-```
-dan berikut adalah hasil modifikasi kode main.dart diatas<p>
-<img src = "docs/praktikum4_4.PNG"><p>
-<img src = "docs/revisi2.gif"><p>
-
-### **Langkah 5 Input dan Selection Widget**
-Flutter menyediakan widget yang dapat menerima input dari pengguna aplikasi yaitu antara lain Checkbox, Date and Time Pickers, Radio Button, Slider, Switch, TextField.<p> Contoh penggunaan TextField widget adalah sebagai berikut:
-
-```dart
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Contoh TextField")),
-        body: const TextField(
-          obscureText: false,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Nama',
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
 ```
-dan berikut adalah hasil modifikasi kode main.dart diatas<p>
-<img src = "docs/praktikum4_5.PNG"><p>
-<img src = "docs/revisi4.gif"><p>
 
-### **Langkah 6 Date and Time Pickers**
-Date and Time Pickers termasuk pada kategori input dan selection widget, berikut adalah contoh penggunaan Date and Time Pickers.
+### **Langkah 2 Buat widget buttonSection**
+Buat Fungsi untuk menambahkan ikon langsung ke kolom. Teks berada di dalam Container dengan margin hanya di bagian atas, yang memisahkan teks dari ikon.<p>
+
+Bangun baris yang berisi kolom-kolom ini dengan memanggil fungsi dan set warna, Icon, dan teks khusus melalui parameter ke kolom tersebut. Sejajarkan kolom di sepanjang sumbu utama menggunakan MainAxisAlignment.spaceEvenly untuk mengatur ruang kosong secara merata sebelum, di antara, dan setelah setiap kolom. Tambahkan kode berikut tepat di bawah deklarasi titleSection di dalam metode build():<p>
+
+**lib/main.dart (buttonSection)**
+```dart
+Color color = Theme.of(context).primaryColor;
+
+Widget buttonSection = Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    _buildButtonColumn(color, Icons.call, 'CALL'),
+    _buildButtonColumn(color, Icons.near_me, 'ROUTE'),
+    _buildButtonColumn(color, Icons.share, 'SHARE'),
+  ],
+);
+```
+
+### **Langkah 3 Tambah button section ke body**
+Tambahkan variabel buttonSection ke dalam body seperti berikut:<p>
+
+<img src = "https://jti-polinema.github.io/flutter-codelab/07-layout-navigasi/img//d026c1bc3e8e1aa0.png"><p>
+
+### **Berikut adalah hasil dari Praktikum saya**<p>
+
+<img src = "docs/praktikum2_01.PNG"><p>
+----
+<br>
+
+### **Praktikum 3: Implementasi text section"**
+Selesaikan langkah-langkah praktikum berikut ini dengan melanjutkan dari praktikum sebelumnya.
+
+### **Langkah 1 Buat widget textSection**
+Tentukan bagian teks sebagai variabel. Masukkan teks ke dalam Container dan tambahkan padding di sepanjang setiap tepinya. Tambahkan kode berikut tepat di bawah deklarasi buttonSection:
 
 ```dart
-import 'dart:async';
-import 'package:flutter/material.dart';
+Widget textSection = Container(
+  padding: const EdgeInsets.all(32),
+  child: const Text(
+    'Carilah teks di internet yang sesuai '
+    'dengan foto atau tempat wisata yang ingin '
+    'Anda tampilkan. '
+    'Tambahkan nama dan NIM Anda sebagai '
+    'identitas hasil pekerjaan Anda. '
+    'Selamat mengerjakan 🙂.',
+    softWrap: true,
+  ),
+);
+```
+Dengan memberi nilai softWrap = true, baris teks akan memenuhi lebar kolom sebelum membungkusnya pada batas kata.
 
-void main() => runApp(const MyApp());
+### **Langkah 2 Tambahkan variabel text section ke body**
+Tambahkan widget variabel textSection ke dalam body seperti berikut:<p>
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+<img src = "https://jti-polinema.github.io/flutter-codelab/07-layout-navigasi/img//aa2c329d766be950.png"><p>
 
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Contoh Date Picker',
-      home: MyHomePage(title: 'Contoh Date Picker'),
-    );
-  }
-}
+### **Berikut adalah hasil dari Praktikum saya**<p>
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+<img src = "docs/praktikum3_01.PNG"><p>
 
-  final String title;
+----
+<br>
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+### **Praktikum 4: Implementasi image section**
+Selesaikan langkah-langkah praktikum berikut ini dengan melanjutkan dari praktikum sebelumnya.
 
-class _MyHomePageState extends State<MyHomePage> {
-  // Variable/State untuk mengambil tanggal
-  DateTime selectedDate = DateTime.now();
+### **Langkah 1 Siapkan aset gambar**
+Anda dapat mencari gambar di internet yang ingin ditampilkan. Buatlah folder images di root project layout_flutter. Masukkan file gambar tersebut ke folder images, lalu set nama file tersebut ke file pubspec.yaml seperti berikut:
 
-  //  Initial SelectDate FLutter
-  Future<void> _selectDate(BuildContext context) async {
-    // Initial DateTime FIinal Picked
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
-  }
+```dart
+  //To add assets to your application, add an assets section, like this:
+  assets:
+  - images/kawah2.jpg
+```
+Contoh nama file gambar di atas adalah kawah2.jpg<p>
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text("${selectedDate.toLocal()}".split(' ')[0]),
-            const SizedBox(
-              height: 20.0,
+>**Tips**<p>
+>- Perhatikan bahwa pubspec.yaml sensitif terhadap huruf besar-kecil, jadi tulis assets: dan URL gambar seperti yang ditunjukkan di atas.
+>- File pubspec juga sensitif terhadap spasi, jadi gunakan indentasi yang tepat.
+>- Anda mungkin perlu memulai ulang program yang sedang berjalan (baik di simulator atau perangkat yang terhubung) agar perubahan pubspec dapat diterapkan.
+
+### **Langkah 2 Tambahkan gambar ke body**
+Tambahkan aset gambar ke dalam body seperti berikut:
+
+```dart
+ body: Column(
+          children: [
+            Image.asset(
+              'images/kawah2.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
             ),
-            ElevatedButton(
-              onPressed: () => {
-                _selectDate(context),
-                // ignore: avoid_print
-                print(selectedDate.day + selectedDate.month + selectedDate.year)
-              },
-              child: const Text('Pilih Tanggal'),
+            titleSection,
+            buttonSection,
+            textSection,
+          ],
+        ),
+```
+
+BoxFit.cover memberi tahu kerangka kerja bahwa gambar harus sekecil mungkin tetapi menutupi seluruh kotak rendernya.
+
+### **Langkah 3 Terakhir, ubah menjadi ListView**
+Pada langkah terakhir ini, atur semua elemen dalam ListView, bukan Column, karena ListView mendukung scroll yang dinamis saat aplikasi dijalankan pada perangkat yang resolusinya lebih kecil.
+
+```dart
+ return MaterialApp(
+      title: 'Flutter layout: Alvian Nur Firdaus | 2141720022',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Flutter layout demo'),
+        ),
+        body: Column(
+          children: [
+            Image.asset(
+              'images/kawah2.jpg',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
             ),
+            titleSection,
+            buttonSection,
+            textSection,
           ],
         ),
       ),
     );
-  }
-}
 ```
-dan berikut adalah hasil modifikasi kode main.dart diatas<p>
-<img src = "docs/praktikum4_6a.PNG"><p>
-<img src = "docs/revisi3.gif"><p>
+### **Berikut adalah hasil dari Praktikum saya**<p>
+<img src = "docs/praktikum4_01.PNG"><p>
 
 ------
 <br>
@@ -544,76 +336,23 @@ dan berikut adalah hasil modifikasi kode main.dart diatas<p>
 
     >**Jawab**<p>
     > Sudah saya jawab dan jelaskan pada praktikum 1, 2, 3 dan 4 tadi diatas atau juga bisa mengklik link dibawah kemudia diarahkan keatas secara otomatis
-    >- [Praktikum 1 (klik)](#praktikum-1-membuat-project-flutter-baru)
-    >- [Praktikum 2 (klik)](#praktikum-2-membuat-repository-github-dan-laporan-praktikum)
-    >- [Praktikum 3 (klik)](#praktikum-3-menerapkan-widget-dasar)
-    >- [Praktikum 4 (klik)](#praktikum-4-menerapkan-widget-material-design-dan-ios-cupertino)
-    > 
+    >- [Praktikum 1 (klik)](#praktikum-1-membangun-layout-di-flutter)<p>
+    ><img src = "docs/praktikum1_01.PNG"><p>
+    >- [Praktikum 2 (klik)](#praktikum-2-implementasi-button-row)<p>
+    ><img src = "docs/praktikum2_01.PNG"><p>
+    >- [Praktikum 3 (klik)](#praktikum-3-implementasi-text-section)<p>
+    ><img src = "docs/praktikum3_01.PNG"><p>
+    >- [Praktikum 4 (klik)](#praktikum-4-implementasi-image-section)<p>
+    ><img src = "docs/praktikum4_01.PNG"><p>
 <p>
 
-2. Pada praktikum 4 mulai dari Langkah 3 sampai 6, buatlah file widget tersendiri di folder basic_widgets, kemudian pada file main.dart cukup melakukan import widget sesuai masing-masing langkah tersebut!<p>
+2. Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/layout-basics<p>
 
     >**Jawab**<p>
-    >pada praktikum ini saya membuat file widget tersendiri sesuai intruksi seperti berikut<p>
-    ><img src = "docs/jawabantugas2a.PNG"><p><p>
-    >kemudian saya melakukan modifikasi pada main dart seperti berikut
-    ```dart
-    import 'package:flutter/material.dart';
-    import 'package:hello_world/basic_widgets/date_time_pickers.dart';
-    import 'package:hello_world/basic_widgets/dialog_widget.dart';
-    // import 'package:hello_world/basic_widgets/image_widget.dart';
-    import 'package:hello_world/basic_widgets/input_selection_widget.dart';
-    import 'package:hello_world/basic_widgets/scaffold_widget.dart';
-    // import 'package:hello_world/basic_widgets/text_widget.dart';
-    void main() {
-      runApp(const TugasNo2());
-    }
 
-    class TugasNo2 extends StatelessWidget {
-      const TugasNo2({super.key});
-
-      @override
-      Widget build(BuildContext context) {
-        return const MaterialApp(
-          home: Row(
-            children: [
-              Expanded(child: MyScaffoldWidget()),
-              Expanded(child: MyDialogWidget()),
-              Expanded(child: MyInputSelectionWidget()),
-              Expanded(child: MyDateTimePickers()),
-            ],
-          ),
-        );
-      }
-    }
-    ```
-    >kemudian menghasilkan output seperti berikut<p>
-    ><img src = "docs/jawabantugas2b.PNG"><p><p>
-    ><img src = "docs/jawabantugas2.gif"><p><p>
-
-3. Selesaikan Codelabs: Your first Flutter app, lalu buatlah laporan praktikumnya dan push ke repository GitHub Anda!<p>
+3. Kumpulkan link commit repository GitHub Anda ke spreadsheet yang telah disediakan!<p>
 
     >**Jawab**<p>
-    >Saya Sudah menyeleasikan tantangan tersebut dan saya simpan pada repositori saya berikut :<p>
-    >- [Repository codelabs : Your Firs Flutter app (klik)](/week-05/src/namer_app/)
-    >kemudian codelab tersebut menghasilkan output seperti berikut<p>
-    >><img src = "docs/jawabantugas3.PNG"><p>
-    ><img src = "docs/revisi5.gif"><p>
-    
-
-4. README.md berisi: capture hasil akhir tiap praktikum (side-by-side, bisa juga berupa file GIF agar terlihat proses perubahan ketika ada aksi dari pengguna) di browser dan perangkat fisik (device) dengan menampilkan NIM dan Nama Anda sebagai ciri pekerjaan Anda. Jika mode developer di perangkat HP Anda belum aktif, silakan cari di internet cara mengaktifkannya!<p>
-
-    >**Jawab**<p>
-    > Sudah saya jawab dan jelaskan pada praktikum 1, 2, 3 dan 4 tadi diatas, beserta hasil output berupa gambar bergerak gif silahkan klik link dibawah kemudia diarahkan keatas secara otomatis
-    >- [Praktikum 1 (klik)](#praktikum-1-membuat-project-flutter-baru)
-    >- [Praktikum 2 (klik)](#praktikum-2-membuat-repository-github-dan-laporan-praktikum)
-    >- [Praktikum 3 (klik)](#praktikum-3-menerapkan-widget-dasar)
-    >- [Praktikum 4 (klik)](#praktikum-4-menerapkan-widget-material-design-dan-ios-cupertino)
-    >
-
-5. Kumpulkan berupa link repository/commit GitHub Anda ke tautan spreadsheet yang telah disepakati oleh dosen!<p>
-
-    >**Jawab**<p>
-    >[Berikut Link Repository saya (klik)](https://github.com/alvianfirdaus/2141720022-mobile-2023/tree/main/week-05)<p>
+    >[Berikut Link Repository saya (klik)](https://github.com/alvianfirdaus/2141720022-mobile-2023/tree/main/week-07)<p>
 
 
