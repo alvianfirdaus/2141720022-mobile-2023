@@ -343,7 +343,8 @@ Pada langkah terakhir ini, atur semua elemen dalam ListView, bukan Column, karen
     >- [Praktikum 3 (klik)](#praktikum-3-implementasi-text-section)<p>
     <img src = "docs/praktikum3_01.PNG"><p>
     >- [Praktikum 4 (klik)](#praktikum-4-implementasi-image-section)<p>
-    <img src="docs/praktikum4_01.PNG"><p>
+
+<img src="docs/praktikum4_01.PNG"><p>
 <p>
 
 2. Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/layout-basics<p>
