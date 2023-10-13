@@ -337,13 +337,13 @@ Pada langkah terakhir ini, atur semua elemen dalam ListView, bukan Column, karen
     >**Jawab**<p>
     > Sudah saya jawab dan jelaskan pada praktikum 1, 2, 3 dan 4 tadi diatas atau juga bisa mengklik link dibawah kemudia diarahkan keatas secara otomatis
     >- [Praktikum 1 (klik)](#praktikum-1-membangun-layout-di-flutter)<p>
-    ><img src = "docs/praktikum1_01.PNG"><p>
+    <img src = "docs/praktikum1_01.PNG"><p>
     >- [Praktikum 2 (klik)](#praktikum-2-implementasi-button-row)<p>
-    ><img src = "docs/praktikum2_01.PNG"><p>
+    <img src = "docs/praktikum2_01.PNG"><p>
     >- [Praktikum 3 (klik)](#praktikum-3-implementasi-text-section)<p>
-    ><img src = "docs/praktikum3_01.PNG"><p>
+    <img src = "docs/praktikum3_01.PNG"><p>
     >- [Praktikum 4 (klik)](#praktikum-4-implementasi-image-section)<p>
-    ><img src = "docs/praktikum4_01.PNG"><p>
+    <img src="docs/praktikum4_01.PNG"><p>
 <p>
 
 2. Silakan implementasikan di project baru "basic_layout_flutter" dengan mengakses sumber ini: https://docs.flutter.dev/codelabs/layout-basics<p>
