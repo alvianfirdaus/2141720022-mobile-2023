@@ -356,6 +356,157 @@ Pada langkah terakhir ini, atur semua elemen dalam ListView, bukan Column, karen
 
     >**Jawab**<p>
 
+### **Code LabBasic Flutter layout concepts**<p>
+
+### **Row and Column classes**
+
+  <table>
+  <tr>
+    <th>Creating a Row</th>
+    <th>Creating a Column</th>
+  </tr>
+  <tr>
+    <th><img src="docs/CreatingaColumn_row.PNG"></th>
+    <th><img src="docs/CreatingaColumn_column.PNG"></th>
+  </tr>
+</table>
+
+### **mainAxisSize property**
+
+<table>
+  <tr>
+    <th>MainAxisSize.max</th>
+    <th>MainAxisSize.min</th>
+  </tr>
+  <tr>
+    <th><img src="docs/ModifyingaxisSize_max.PNG"></th>
+    <th><img src="docs/ModifyingaxisSize_min.PNG"></th>
+  </tr>
+</table>
+
+### **mainAxisAlignment property**
+
+<table>
+  <tr>
+    <th>MainAxisAlignment.start</th>
+    <th>MainAxisAlignment.end</th>
+  </tr>
+  <tr>
+    <th><img src="docs/Modifyingmainaxisalignment_start.PNG"></th>
+    <th><img src="docs/Modifyingmainaxisalignment_end.PNG"></th>
+  </tr>
+</table>
+
+### **crossAxisAlignment property**
+
+<table>
+  <tr>
+    <th>CrossAxisAlignment.center</th>
+    <th>CrossAxisAlignment.start</th>
+  </tr>
+  <tr>
+    <th><img src="docs/Modifyingcrossaxisalignment_center.PNG"></th>
+    <th><img src="docs/Modifyingcrossaxisalignment_start.PNG"></th>
+  </tr>
+</table>
+
+### **Flexible widget**
+
+<table>
+  <tr>
+    <th>FlexFit.loose</th>
+    <th>FlexFit.tight</th>
+  </tr>
+  <tr>
+    <th><img src="docs/Changingfitproperties_fit.PNG"></th>
+    <th><img src="docs/Changingfiproperties_tight.PNG"></th>
+  </tr>
+</table>
+
+### **Expanded widget**
+<table>
+  <tr>
+    <th>  Expanded(child: BlueBox(),),</th>
+  </tr>
+  <tr>
+    <th><img src="docs/expanded.PNG"></th>
+  </tr>
+</table>
+
+### **SizedBox widget**
+
+<table>
+  <tr>
+    <th>The following example wraps the middle BlueBox widget inside of a SizedBox widget and sets the BlueBox’s width to 100 logical pixels.</th>
+    <th>Add a height property equal to 100 logical pixels inside the SizedBox widget, and run again.</th>
+    <th>Creating space</th>
+  </tr>
+  <tr>
+    <th><img src="docs/Resizing a widget1.PNG"></th>
+    <th><img src="docs/Resizing a widget.PNG"></th>
+    <th><img src="docs/Creatingspace.PNG"></th>
+  </tr>
+</table>
+
+### **Spacer widget**
+
+<table>
+  <tr>
+    <th>The following example separates the first two BlueBox widgets using a Spacer widget with a flex value of 1.,</th>
+    <th>Add another Spacer widget (also with a flex value of 1) between the second and third BlueBox widgets</th>
+  </tr>
+  <tr>
+    <th><img src="docs/Creating more space.PNG"></th>
+    <th><img src="docs/Creating more space1.PNG"><th>
+  </tr>
+</table>
+
+### **Text wtidge**
+
+<tr>
+    <th>Aligning text</th>
+  </tr>
+  <tr>
+    <th><img src="docs/Aligning text.PNG"></th>
+  </tr>
+</table>
+
+### **Icon widget**
+
+<table>
+<tr>
+    <th>Creating an Icon</th>
+  </tr>
+  <tr>
+    <th><img src="docs/CreatinganIcon.PNG"></th>
+  </tr>
+</table>
+
+### **Image widget**
+
+<table>
+<tr>
+    <th>No Image</th>
+    <th>add Image</th>
+  </tr>
+  <tr>
+    <th><img src="docs/Displayinganimage.PNG"></th>
+    <th><img src="docs/Displayinganimage_alvian.PNG"></th>
+  </tr>
+</table>
+
+### **Putting it all together**
+
+<table>
+<tr>
+    <th>result</th>
+  </tr>
+  <tr>
+    <th><img src="docs/exercise1.PNG"></th>
+  </tr>
+</table>
+
+
 3. Kumpulkan link commit repository GitHub Anda ke spreadsheet yang telah disediakan!<p>
 
     >**Jawab**<p>
