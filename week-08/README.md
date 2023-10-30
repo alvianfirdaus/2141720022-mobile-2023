@@ -191,7 +191,301 @@ final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
 
 ### **Jawab**<p>
 
-**Berikut adalah hasil output Tugas Praktikum saya**
+**Berikut adalah hasil output Tugas Praktikum saya hasil revisi menambahkan decomposition widget**
+
+
+### **Models**
+>File item.dart
+
+```dart
+class Item {
+  String name, imageUrl;
+  int price, stok;
+  double rating;
+
+  Item(
+      {required this.name,
+      required this.price,
+      required this.imageUrl,
+      required this.stok,
+      required this.rating});
+}
+```
+
+### **Pages**
+>File home_page.dart
+
+```dart
+import 'package:belanja/models/item.dart';
+import 'package:flutter/material.dart';
+import 'package:belanja/widgets/card.dart';
+import 'package:belanja/widgets/bottom_app_bar.dart';
+
+class HomePage extends StatelessWidget {
+  final List<Item> items = [
+    Item(
+        name: 'DJI Mini 2 SE',
+        price: 5690000,
+        imageUrl: 'assets/dji.PNG',
+        stok: 5,
+        rating: 4.6),
+    Item(
+        name: 'DJI Inspire 2',
+        price: 40599999,
+        imageUrl: 'assets/dji_inspire2.PNG',
+        stok: 5,
+        rating: 5),
+    Item(
+        name: 'Sony HXR MC88',
+        price: 21999000,
+        imageUrl: 'assets/sony_mc88.PNG',
+        stok: 5,
+        rating: 4.5),
+    Item(
+        name: 'Sony HXR NX100',
+        price: 19500000,
+        imageUrl: 'assets/sony_nx100.PNG',
+        stok: 10,
+        rating: 4.7),
+    Item(
+        name: 'Atem Mini Pro',
+        price: 5000000,
+        imageUrl: 'assets/atem.PNG',
+        stok: 2,
+        rating: 4.9),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Sunrise Camera & Gadgets'),
+        ),
+        body: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // Menampilkan 2 item per baris
+            childAspectRatio: 0.7, // Mengatur rasio lebar-tinggi item
+          ),
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            final item = items[index];
+            return AlvianCard(
+                item: item,
+                onTap: () =>
+                    Navigator.pushNamed(context, '/item', arguments: item));
+          },
+        ),
+        bottomNavigationBar: AlvianBottomAppBar());
+  }
+}
+
+```
+
+>file item_page.dart
+
+```dart
+import 'package:belanja/models/item.dart';
+import 'package:flutter/material.dart';
+
+class ItemPage extends StatelessWidget {
+  const ItemPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Item Details'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Hero(
+              tag: 'productImage${itemArgs.name}',
+              child: Image.asset(itemArgs.imageUrl),
+            ),
+            const SizedBox(
+                height: 16), // Tambahkan jarak antara gambar dan teks
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '${itemArgs.name}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                ),
+                Row(
+                  children: [
+                    const Icon(Icons.star, color: Colors.amber),
+                    Text(
+                      itemArgs.rating.toString(),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 8), // Tambahkan jarak antara nama dan harga
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Rp. ${itemArgs.price}',
+                  style: const TextStyle(
+                    color: Colors.deepOrange,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  'Stok: ${itemArgs.stok}',
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+### **widgets**
+> file bottom_app_bar.dart
+
+```dart
+import 'package:flutter/material.dart';
+
+class AlvianBottomAppBar extends StatelessWidget {
+  const AlvianBottomAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: const BoxDecoration(
+          color: Colors.blue,
+        ),
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Nama: Alvian Nur Firdaus',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            ),
+            Text(
+              'NIM: 2141720022',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+> file card.dart 
+
+```dart
+import 'package:belanja/models/item.dart';
+import 'package:flutter/material.dart';
+
+class AlvianCard extends StatelessWidget {
+  void Function() onTap;
+  final Item item;
+  AlvianCard({super.key, required this.item, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, '/item', arguments: item);
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(
+              8), // Tambahkan padding pada keseluruhan Card
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Hero(
+                tag: 'productImage${item.name}',
+                child: AspectRatio(
+                  aspectRatio:
+                      1, // Rasio lebar-tinggi 1:1 untuk ukuran yang sama
+                  child: Image.asset(item.imageUrl, fit: BoxFit.fitWidth),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .spaceBetween, // Agar rating berada di sebelah kanan
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 8), // Padding di atas teks "name"
+                    child: Text(
+                      item.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      const Icon(Icons.star, color: Colors.amber),
+                      Text(
+                        item.rating.toString(),
+                        style: const TextStyle(
+                          color: Colors.amber,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Text(
+                  'Rp. ${item.price}',
+                  style: const TextStyle(
+                    color: Colors.deepOrange,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              Text(
+                'Stok: ${item.stok}',
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
 
   <table>
   <tr>
@@ -200,9 +494,9 @@ final itemArgs = ModalRoute.of(context)!.settings.arguments as Item;
     <th>gambar output berupa gif</th>
   </tr>
   <tr>
-    <th><img src="docs/tugas_01.PNG"></th>
-    <th><img src="docs/tugas_02.PNG"></th>
-    <th><img src="docs/tugas.gif"></th>
+    <th><img src="docs/tugas01ref.PNG"></th>
+    <th><img src="docs/tugas_02ref.PNG"></th>
+    <th><img src="docs/tugasref.gif"></th>
   </tr>
 </table>
 
