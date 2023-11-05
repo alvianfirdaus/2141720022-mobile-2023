@@ -156,7 +156,7 @@ Run aplikasi tersebut dengan tekan F5, maka hasilnya akan seperti berikut.<p>
 
 
 >**Link Repository**<p>
->[Berikut Link Repository saya (klik)](https://github.com/alvianfirdaus/2141720022-mobile-2023/tree/main/week-08)<p>
+>[Berikut Link Repository saya (klik)](https://github.com/alvianfirdaus/2141720022-mobile-2023/tree/main/week-10)<p>
 
 
 
