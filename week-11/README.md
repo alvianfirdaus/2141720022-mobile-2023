@@ -24,6 +24,14 @@ Setelah menyelesaikan codelab ini Anda akan mampu untuk:
 3. membuat app state di multiple screens
 
 
+### **Daftar Isi**
+####  [Praktikum 1](#praktikum-1)
+####  [Tugas Praktikum 1](#tugas-praktikum-1-dasar-state-dengan-model-view)
+####  [Praktikum 2](#praktikum-2-mengelola-data-layer-dengan-inheritedwidget-dan-inheritednotifier)
+####  [Tugas Praktikum 2](#tugas-praktikum-2-inheritedwidget)
+####  [Praktikum 3](#praktikum-3-membuat-state-di-multiple-screens)
+####  [Tugas Praktikum 3](#tugas-praktikum-3-state-di-multiple-screens)
+
 <br>
 
 ---------
@@ -262,6 +270,21 @@ Lakukan Hot restart (bukan hot reload) pada aplikasi Flutter Anda. Anda akan mel
 ### **Tugas Praktikum 1: Dasar State dengan Model-View**
 1. Selesaikan langkah-langkah praktikum tersebut, lalu dokumentasikan berupa GIF hasil akhir praktikum beserta penjelasannya di file README.md! Jika Anda menemukan ada yang error atau tidak berjalan dengan baik, silakan diperbaiki.
 
+
+
+2. Jelaskan maksud dari langkah 4 pada praktikum tersebut! Mengapa dilakukan demikian?
+
+    **Jawab**<p>
+    Penambahan data_layer.dart yang dilakukan pada langkah 4 bertujuan untuk membuat class yang berisi data/model yang akan digunakan pada program. Hal tersebut sangat bermanfaat dalam menulis kode yang efisien dan efektif, karena jika terdapat banyak data/model yang perlu untuk diimpor pada suatu file, hal ini dapat disingkat dengan hanya melakukan import pada data_layer.dart. Dapat dibayangkan jika terdapat 10 data class dan ingin melakukan import 10 data class tersebut pada beberapa file, maka hal tersebut tentu akan tidak efektif dan ribet. Maka dari itu diperlukanlah data_layer.dart ini.
+
+3. Mengapa perlu variabel plan di langkah 6 pada praktikum tersebut? Mengapa dibuat konstanta ?
+
+    **Jawab**<p>
+    Hal ini dikarenakan isi atau beberapa widget dari file plan_screen.dart memerlukan model data dari Plan itu sendiri, sehingga perlu untuk dibuat variabel objek dari class Plan. Variabel ini dibuat konstanta karena dapat membuat performa aplikasi lebih baik
+
+
+4. Lakukan capture hasil dari Langkah 9 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
+
     **Jawab**
         <table>
         <tr>
@@ -273,27 +296,19 @@ Lakukan Hot restart (bukan hot reload) pada aplikasi Flutter Anda. Anda akan mel
             <th><img src="docs/tugas1.gif"></th>
         </tr>
         </table>
-
-2. Jelaskan maksud dari langkah 4 pada praktikum tersebut! Mengapa dilakukan demikian?
-
-    **Jawab**
-
-3. Mengapa perlu variabel plan di langkah 6 pada praktikum tersebut? Mengapa dibuat konstanta ?
-
-    **Jawab**
-
-4. Lakukan capture hasil dari Langkah 9 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
-
-    **Jawab**
+      Aplikasi yang telah dibuat adalah aplikasi untuk menyimpan Plan dengan fitur penambahan plan dan ceklis yang dibuat dengan menggunakan struktur model-view.
 
 5. Apa kegunaan method pada Langkah 11 dan 13 dalam lifecyle state ?
 
     **Jawab**
+    - initState: method initState pada lifecycle state berguna untuk melakukan inisialisasi data yang dibutuhkan oleh widget. Method ini akan dipanggil ketika widget pertama kali dibuat. Pada program ini, method ini digunakan untuk menginisialisasi scrollController yang akan menghapus focus pada masing-masing text field ketika melakukan scroll.
+   - dispose: methode dispose pada lifecycle state berguna untuk melakukan pembersihan data yang tidak diperlukan lagi. Method ini akan dipanggil ketika widget dihapus dari tree. Pada program ini, method ini digunakan untuk membersihkan data yang tidak diperlukan lagi pada listview yang berisi plan yang telah dibuat.
 
 6. Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke spreadsheet yang telah disediakan!
 
     **Jawab**
-
+    [Berikut Link Repository saya (klik)](https://github.com/alvianfirdaus/2141720022-mobile-2023/tree/main/week-11)<p>
+  
 <br>
 
 -----
@@ -473,34 +488,36 @@ Akhirnya, run atau tekan F5 jika aplikasi belum running. Tidak akan terlihat per
 ### **Tugas Praktikum 2: InheritedWidget**
 1. Selesaikan langkah-langkah praktikum tersebut, lalu dokumentasikan berupa GIF hasil akhir praktikum beserta penjelasannya di file README.md! Jika Anda menemukan ada yang error atau tidak berjalan dengan baik, silakan diperbaiki sesuai dengan tujuan aplikasi tersebut dibuat.
 
-    **Jawab**
-        <table>
-        <tr>
-            <th>Hasil Output Praktikum 1 PNG</th>
-            <th>Hasil Output Praktikum 1 GIF</th>
-        </tr>
-        <tr>
-            <th><img src="docs/tugas1.jpeg"></th>
-            <th><img src="docs/tugas1.gif"></th>
-        </tr>
-        </table>
-
 2. Jelaskan mana yang dimaksud InheritedWidget pada langkah 1 tersebut! Mengapa yang digunakan InheritedNotifier?
 
-    **Jawab**
+    **Jawab**<p>
+     InheritedWidget digunakan dalam file plan_provider.dart, seperti yang telah ditunjukkan pada point sebelumnya. Hanya saja InheritedWIdget tidak memiliki fungsi yang dapat melakukan notify widget dibawahnya secara built-in sehingga diperlukan juga InheritedNotifier untuk melakukan hal tersebut.
+
 
 3. Jelaskan maksud dari method di langkah 3 pada praktikum tersebut! Mengapa dilakukan demikian?
 
-    **Jawab**
+    **Jawab**<p>
+    Method-method yang digunakan pada langkah 3 berfungsi untuk menghitung jumlah task yang selesai dan return hasilnya. Kemudian completenessMessage berfungsi untuk menunjukkan pesan mengenai jumlah task yang telah selesai.
 
 4. Lakukan capture hasil dari Langkah 9 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
 
     **Jawab**
+    <table>
+      <tr>
+      <th>Hasil Output Praktikum 2 PNG</th>
+      <th>Hasil Output Praktikum 2 GIF</th>
+      </tr>
+      <tr>
+      <th><img src="docs/tugas2.jpeg"></th>
+      <th><img src="docs/tugas2.gif"></th>
+      </tr>
+      </table>
+    Praktikum 2 ini menambahkan sebuah text dibawah yang menunjukkan jumlah task yang telah diselesaikan atau diceklis dari aplikasi Praktikum 1. Kemudian terdapat tambahan pada kode program untuk menerapkan state management yang baik dengan menggunakan InheritedWidget dan InheritedNotifier.
 
 5. Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke spreadsheet yang telah disediakan!
 
-    **Jawab**
-
+    **Jawab**<p>
+    [Berikut Link Repository saya (klik)](https://github.com/alvianfirdaus/2141720022-mobile-2023/tree/main/week-11)<p>
 
 <br>
 
@@ -802,10 +819,33 @@ Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bi
 1. Selesaikan langkah-langkah praktikum tersebut, lalu dokumentasikan berupa GIF hasil akhir praktikum beserta penjelasannya di file README.md! Jika Anda menemukan ada yang error atau tidak berjalan dengan baik, silakan diperbaiki sesuai dengan tujuan aplikasi tersebut dibuat.<p>
 
 2. Berdasarkan Praktikum 3 yang telah Anda lakukan, jelaskan maksud dari gambar diagram berikut ini!<p>
-<img src="https://jti-polinema.github.io/flutter-codelab/11-basic-state/img//9ce81bcd2817adc8.png">
+  <img src="https://jti-polinema.github.io/flutter-codelab/11-basic-state/img//9ce81bcd2817adc8.png"><p>
+
+  
+    **Jawab**<p>
+    Diagram sebelah kiri adalah tahap pembuatan rencana baru dalam aplikasi, di mana pengguna berinteraksi dengan PlanCreatorScreen. Data rencana dan daftar rencana dikelola oleh PlanProvider di bawah MaterialApp, dengan layout menggunakan Column dan Expanded.<p>
+    
+    Di sebelah kanan, tampilan PlanScreen menampilkan daftar rencana yang ada setelah navigasi. Data juga diatur oleh PlanProvider, dan layoutnya menggunakan Column, Expanded, dan SafeArea. Terdapat ListView untuk menampilkan daftar rencana dan elemen Text di bawah SafeArea untuk pesan tentang kelengkapan rencana.<p>
+    
+    Transisi antara keduanya terjadi saat pengguna beralih antara pembuatan rencana (PlanCreatorScreen) dan melihat rencana yang sudah ada (PlanScreen).
 
 3. Lakukan capture hasil dari Langkah 14 berupa GIF, kemudian jelaskan apa yang telah Anda buat!
 
+    **Jawab**
+    <table>
+      <tr>
+      <th>Hasil Output Praktikum 3 PNG</th>
+      <th>Hasil Output Praktikum 3 GIF</th>
+      </tr>
+      <tr>
+      <th><img src="docs/tugas3.jpeg"></th>
+      <th><img src="docs/tugas3.gif"></th>
+      </tr>
+      </table>
+      Implementasi ini memungkinkan pengguna untuk mengelola dan melihat daftar rencana dengan lebih dinamis, dan aplikasi dapat menyesuaikan tampilan sesuai dengan perubahan pada data yang dikelola.
 
 4. Kumpulkan laporan praktikum Anda berupa link commit atau repository GitHub ke spreadsheet yang telah disediakan!
+
+    **Jawab**<p>
+      [Berikut Link Repository saya (klik)](https://github.com/alvianfirdaus/2141720022-mobile-2023/tree/main/week-11)<p>
 
