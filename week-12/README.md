@@ -447,19 +447,80 @@ final futures = Future.wait<int>([
 ]);
 ```
 
->Soal 8
+>Soal 8<p>
 >Jelaskan maksud perbedaan kode langkah 1 dan 4!
 
 
+<br>
+
+-----
+
+<br>
+
+### **Praktikum 5: Menangani Respon Error pada Async Code**
+Ada beberapa teknik untuk melakukan handle error pada code async. Pada praktikum ini Anda akan menggunakan 2 cara, yaitu then() callback dan pola async/await.<p>
+
+Setelah Anda menyelesaikan praktikum 4, Anda dapat melanjutkan praktikum 5 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 4.<p>
+
+### **Langkah 1: Buka file main.dart**
+Tambahkan method ini ke dalam class _FuturePageState
+
+```dart
+Future returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception('Something terrible happened!');
+  }
+```
+
+### **Langkah 2: ElevatedButton**
+Ganti dengan kode berikut
+
+```dart
+returnError().then((value) {
+                setState(() {
+                  result = 'Success';
+                });
+              }).catchError((onError) {
+                setState(() {
+                  result = onError.toString();
+                });
+              }).whenComplete(() => print('Complete'));
+```
+
+### **Langkah 3: Run**
+Lakukan run dan klik tombol GO! maka akan menghasilkan seperti gambar berikut.
+
+Pada bagian debug console akan melihat teks Complete seperti berikut.<p>
+
+>Soal 9<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 9".
+
+<table>
+    <tr>
+        <th><img src="docs/soal9jp.jpeg"></th>
+        <th><img src="docs/soal9gf.gif"></th>
+    </tr>
+</table>
 
 
+### **Langkah 4: Tambah method handleError()**
+Tambahkan kode ini di dalam class _FutureStatePage
 
+```dart
+Future handleError() async {
+    try {
+      await returnError();
+    } catch (error) {
+      setState(() {
+        result = error.toString();
+      });
+    } finally {
+      print('Complete');
+    }
+  }
+```
 
-
-
-
-
-
-
-
-
+>Soal 10<p>
+>Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
