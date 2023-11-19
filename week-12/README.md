@@ -775,3 +775,56 @@ else if (snapshot.connectionState == ConnectionState.done) {
         <th><img src="docs/soal12gf.gif"></th>
     </tr>
 </table>
+
+<br>
+
+-----
+
+<br>
+
+### **Praktikum 8: Navigation route dengan Future Function**
+Praktikum kali ini Anda akan melihat manfaat Future untuk Navigator dalam transformasi Route menjadi sebuah function async. Anda akan melakukan push screen baru dan fungsi await menunggu data untuk melakukan update warna background pada screen.<p>
+
+Setelah Anda menyelesaikan praktikum 7, Anda dapat melanjutkan praktikum 8 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 7.
+
+### **Langkah 1: Buat file baru navigation_first.dart**
+Buatlah file baru ini di project lib Anda.
+
+### **Langkah 2: Isi kode navigation_first.dart**
+
+```dart
+import 'package:flutter/material.dart';
+
+class NavigationFirst extends StatefulWidget {
+  const NavigationFirst({super.key});
+
+  @override
+  State<NavigationFirst> createState() => _NavigationFirstState();
+}
+
+class _NavigationFirstState extends State<NavigationFirst> {
+  Color color = Colors.blue.shade700;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(
+        title: const Text('Navigation First Screen Alvian'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+            child: const Text('Change Color'),
+            onPressed: () {
+              _navigateAndGetColor(context);
+            }),
+      ),
+    );
+  }
+}
+```
+
+>Soal 15<p>
+>Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+>Silakan ganti dengan warna tema favorit Anda.
