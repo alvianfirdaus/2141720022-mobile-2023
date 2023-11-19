@@ -828,3 +828,84 @@ class _NavigationFirstState extends State<NavigationFirst> {
 >Soal 15<p>
 >Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
 >Silakan ganti dengan warna tema favorit Anda.
+
+### **Langkah 3: Tambah method di class _NavigationFirstState**
+Tambahkan method ini.
+
+```dart
+Future _navigateAndGetColor(BuildContext context) async {
+   color = await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const NavigationSecond()),) ?? Colors.blue;
+   setState(() {});
+   });
+}
+```
+
+### **Langkah 4: Buat file baru navigation_second.dart**
+Buat file baru ini di project lib Anda. Silakan jika ingin mengelompokkan view menjadi satu folder dan sesuaikan impor yang dibutuhkan.
+
+### **Langkah 5: Buat class NavigationSecond dengan StatefulWidget**
+
+```dart
+import 'package:flutter/material.dart';
+import './navigation_second.dart';
+
+class NavigationFirst extends StatefulWidget {
+  const NavigationFirst({super.key});
+
+  @override
+  State<NavigationFirst> createState() => _NavigationFirstState();
+}
+
+class _NavigationFirstState extends State<NavigationFirst> {
+  Color color = Colors.blue.shade700;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: color,
+      appBar: AppBar(
+        title: const Text('Navigation First Screen Alvian'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+            child: const Text('Change Color'),
+            onPressed: () {
+              _navigateAndGetColor(context);
+            }),
+      ),
+    );
+  }
+
+  Future _navigateAndGetColor(BuildContext context) async {
+    color = await Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NavigationSecond()),
+        ) ??
+        Color(0xFFBFB29E);
+    setState(() {});
+  }
+}
+```
+
+### **Langkah 6: Edit main.dart**
+Lakukan edit properti home.
+
+```dart 
+home: const NavigationFirst(),
+```
+
+### **Langkah 8: Run**
+Lakukan run, jika terjadi error silakan diperbaiki.
+
+>Soal 16<p>
+>Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?<p>
+>Gantilah 3 warna pada langkah 5 dengan warna favorit Anda!<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 16".<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal16ajp.jpeg"></th>
+        <th><img src="docs/soal16bjp.jpeg"></th>
+        <th><img src="docs/soal16gf.gif"></th>
+    </tr>
+</table>
