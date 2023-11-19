@@ -332,6 +332,41 @@ Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bi
 ### **Langkah 5: Ganti method calculate()**
 Gantilah isi code method calculate() seperti kode berikut, atau Anda dapat membuat calculate2()
 
+```dart
+calculate2() async {
+    try {
+      await new Future.delayed(const Duration(seconds: 5));
+      completer.complete(42);
+    } catch (_) {
+      completer.completeError({});
+    }
+  }
+```
+
+### **Langkah 6: Pindah ke onPressed()
+Ganti menjadi kode seperti berikut.**
+
+```dart
+getNumber().then((value) {
+  setState(() {
+    result = value.toString();
+  });
+}).catchError((e) {
+  result = 'An error occurred';
+});
+```
+
+>Soal 6<p>
+>Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 6".<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal6jp.jpeg"></th>
+        <th><img src="docs/soal6gf.gif"></th>
+    </tr>
+</table>
+
 
 
 
