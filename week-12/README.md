@@ -367,6 +367,88 @@ getNumber().then((value) {
     </tr>
 </table>
 
+<br>
+
+-----------------
+
+<br>
+
+### **Praktikum 4: Memanggil Future secara paralel**
+Ketika Anda membutuhkan untuk menjalankan banyak Future secara bersamaan, ada sebuah class yang dapat Anda gunakan yaitu: FutureGroup.<p>
+
+FutureGroup tersedia di package async, yang mana itu harus diimpor ke file dart Anda, seperti berikut.
+
+```dart
+import 'package:async/async.dart';
+```
+
+>**Catatan:** Package dart:async dan async/async.dart merupakan library yang berbeda. Pada beberapa kasus, Anda membutuhkan kedua lib tersebut untuk me-run code async.<p>
+
+FutureGroup adalah sekumpulan dari Future yang dapat run secara paralel. Ketika run secara paralel, maka konsumsi waktu menjadi lebih hemat (cepat) dibanding run method async secara single setelah itu method async lainnya.<p>
+
+Ketika semua code async paralel selesai dieksekusi, maka FutureGroup akan return value sebagai sebuah List, sama juga ketika ingin menambahkan operasi paralel dalam bentuk List.<p>
+
+Setelah Anda menyelesaikan praktikum 3, Anda dapat melanjutkan praktikum 4 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 3.
+
+### **Langkah 1: Buka file main.dart**
+Tambahkan method ini ke dalam class _FuturePageState
+
+```dart
+void returnFG() {
+    FutureGroup<int> futureGroup = FutureGroup<int>();
+    futureGroup.add(returnOneAsync());
+    futureGroup.add(returnTwoAsync());
+    futureGroup.add(returnThreeAsync());
+    futureGroup.close();
+    futureGroup.future.then((List<int> value) {
+      int total = 0;
+      for (var element in value) {
+        total += element;
+      }
+      setState(() {
+        result = total.toString();
+      });
+    });
+  }
+```
+
+### **Langkah 2: Edit onPressed()**
+Anda bisa hapus atau comment kode sebelumnya, kemudian panggil method dari langkah 1 tersebut.
+
+```dart
+onPressed: () {
+              returnFG();
+}
+```
+
+### **Langkah 3: Run**
+Anda akan melihat hasilnya dalam 3 detik berupa angka 6 lebih cepat dibandingkan praktikum sebelumnya menunggu sampai 9 detik.<p>
+
+>Soal 7<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 7".<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal7jp.jpeg"></th>
+        <th><img src="docs/soal7gf.gif"></th>
+    </tr>
+</table>
+
+### **Langkah 4: Ganti variabel futureGroup**
+Anda dapat menggunakan FutureGroup dengan Future.wait seperti kode berikut.
+
+```dart
+final futures = Future.wait<int>([
+  returnOneAsync(),
+  returnTwoAsync(),
+  returnThreeAsync(),
+]);
+```
+
+>Soal 8
+>Jelaskan maksud perbedaan kode langkah 1 dan 4!
 
 
 
