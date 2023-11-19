@@ -673,3 +673,22 @@ Tambahkan widget loading seperti kode berikut. Lalu hot restart, perhatikan peru
     </tr>
 </table>
 
+<br>
+
+----
+
+<br>
+
+### **Praktikum 7: Manajemen Future dengan FutureBuilder**
+Pola ketika menerima beberapa data secara async dan melakukan update pada UI sebenarnya itu tergantung pada ketersediaan data. Secara umum fakta di Flutter, ada sebuah widget yang membantu Anda untuk memudahkan manajemen future yaitu widget FutureBuilder.<p>
+
+Anda dapat menggunakan FutureBuilder untuk manajemen future bersamaan dengan update UI ketika ada update Future. FutureBuilder memiliki status future sendiri, sehingga Anda dapat mengabaikan penggunaan setState, Flutter akan membangun ulang bagian UI ketika update itu dibutuhkan.<p>
+
+Untuk lebih memahami widget FutureBuilder, mari kita coba dengan praktikum ini.<p>
+
+Setelah Anda menyelesaikan praktikum 6, Anda dapat melanjutkan praktikum 7 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 6.
+
+### **Langkah 1: Modifikasi method getPosition()**
+Buka file geolocation.dart kemudian ganti isi method dengan kode ini.
