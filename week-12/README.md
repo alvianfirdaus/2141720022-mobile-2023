@@ -632,3 +632,44 @@ class _LocationScreenState extends State<LocationScreen> {
 
 >Soal 11<p>
 >Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+
+
+### **Langkah 6: Edit main.dart**
+Panggil screen baru tersebut di file main Anda seperti berikut.
+
+```dart
+home: LocationScreen(),
+```
+
+### **Langkah 7: Run**
+Run project Anda di device atau emulator (bukan browser), maka akan tampil seperti berikut ini.
+
+### **Langkah 8: Tambahkan animasi loading**
+Tambahkan widget loading seperti kode berikut. Lalu hot restart, perhatikan perubahannya.
+
+```dart
+ @override
+  Widget build(BuildContext context) {
+    final myWidget =
+    myPosition == '' ? const CircularProgressIndicator() : Text(myPosition);
+    ;
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location Alvian')),
+      body: Center
+          child: FutureBuilder(child:myWidget),
+      );
+  },
+```
+
+>Soal 12<p>
+>Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));
+>Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 12".
+
+<table>
+    <tr>
+        <th><img src="docs/soal12jp.jpeg"></th>
+        <th><img src="docs/soal12gf.gif"></th>
+    </tr>
+</table>
+
