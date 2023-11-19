@@ -21,7 +21,7 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
     final myWidget =
-    myPosition == '' ? const CircularProgressIndicator() : Text(myPosition);
+        myPosition == '' ? const CircularProgressIndicator() : Text(myPosition);
     ;
     return Scaffold(
       appBar: AppBar(title: const Text('Current Location Alvian')),
@@ -32,6 +32,9 @@ class _LocationScreenState extends State<LocationScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator();
           } else if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Text('Something terrible happened!');
+            }
             return Text(snapshot.data.toString());
           } else {
             return const Text('');

@@ -662,13 +662,14 @@ Tambahkan widget loading seperti kode berikut. Lalu hot restart, perhatikan peru
 ```
 
 >Soal 12<p>
->Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));
+>Jika Anda tidak melihat animasi loading tampil, kemungkinan itu berjalan sangat cepat. Tambahkan delay pada method getPosition() dengan kode await Future.delayed(const Duration(seconds: 3));<p>
 >Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
->Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 12".
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 12".<p>
 
 <table>
     <tr>
         <th><img src="docs/soal12jp.jpeg"></th>
+        <th><img src="docs/soal12lp.PNG"></th>
         <th><img src="docs/soal12gf.gif"></th>
     </tr>
 </table>
@@ -692,3 +693,85 @@ Setelah Anda menyelesaikan praktikum 6, Anda dapat melanjutkan praktikum 7 ini. 
 
 ### **Langkah 1: Modifikasi method getPosition()**
 Buka file geolocation.dart kemudian ganti isi method dengan kode ini.
+
+```dart
+Future<Position> getPosition() async {
+    await Geolocator.requestPermission();
+    await Geolocator.isLocationServiceEnabled();
+    await Future.delayed(const Duration(seconds: 3));
+    Position position = await Geolocator.getCurrentPosition();
+    return position; }
+```
+
+### **Langkah 2: Tambah variabel**
+Tambah variabel ini di class _LocationScreenState
+
+```dart
+Future<Position>? position;
+```
+
+### **Langkah 3: Tambah initState()**
+Tambah method ini dan set variabel position
+
+### **Langkah 4: Edit method build()**
+Ketik kode berikut dan sesuaikan. Kode lama bisa Anda comment atau hapus.
+
+```dart
+@override
+  Widget build(BuildContext context) {
+    final myWidget =
+        myPosition == '' ? const CircularProgressIndicator() : Text(myPosition);
+    ;
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location Alvian')),
+      body: Center(
+          child: FutureBuilder(
+        future: position,
+        builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            return Text(snapshot.data.toString());
+          } else {
+            return const Text('');
+          }
+        },
+      )),
+    );
+```
+
+
+>Soal 13<p>
+>Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 13".<p>
+>Seperti yang Anda lihat, menggunakan FutureBuilder lebih efisien, clean, dan reactive dengan Future bersama UI.<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal12jp.jpeg"></th>
+        <th><img src="docs/soal12gf.gif"></th>
+    </tr>
+</table>
+
+### **Langkah 5: Tambah handling error**
+Tambahkan kode berikut untuk menangani ketika terjadi error. Kemudian hot restart.
+
+```dart
+else if (snapshot.connectionState == ConnectionState.done) {
+  if (snapshot.hasError) {
+     return Text('Something terrible happened!');
+  }
+  return Text(snapshot.data.toString());
+}
+```
+
+>Soal 14<p>
+>Apakah ada perbedaan UI dengan langkah sebelumnya? Mengapa demikian?<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W12: Soal 14".<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal12jp.jpeg"></th>
+        <th><img src="docs/soal12gf.gif"></th>
+    </tr>
+</table>
