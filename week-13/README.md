@@ -250,5 +250,163 @@ colorStream.getColors().listen((eventColor) {
 >- await for mengharapkan fungsi yang dilabeli async, sementara listen dapat digunakan di dalam atau di luar fungsi yang diberi label async.<p>
 >- await for digunakan untuk membuat loop yang akan terus menunggu dan mendengarkan stream, sementara listen digunakan untuk menetapkan fungsi callback yang akan dipanggil setiap kali ada perubahan pada stream.<p>
 >
->Dalam kedua kasus, tujuannya tetap sama, yaitu merespons perubahan pada stream dan memperbarui UI melalui setState ketika ada perubahan warna. Pilihan antara keduanya tergantung pada kebutuhan dan struktur kode aplikasi Flutter Anda.
+>Dalam kedua kasus, tujuannya tetap sama, yaitu merespons perubahan pada stream dan memperbarui UI melalui setState ketika ada perubahan warna. Pilihan antara keduanya tergantung pada kebutuhan dan struktur kode aplikasi Flutter Anda.<p>
+
+<br>
+>**Catatan:** Stream di Flutter memiliki fitur yang powerfull untuk menangani data secara async. Stream dapat dimanfaatkan pada skenario dunia nyata seperti real-time messaging, unggah dan unduh file, tracking lokasi user, bekerja dengan data sensor IoT, dan lain sebagainya.
+
+<br>
+
+-----
+
+<br>
+
+### **Praktikum 2: Stream controllers dan sinks**
+StreamControllers akan membuat jembatan antara Stream dan Sink. Stream berisi data secara sekuensial yang dapat diterima oleh subscriber manapun, sedangkan Sink digunakan untuk mengisi (injeksi) data.<p>
+
+Secara sederhana, StreamControllers merupakan stream management. Ia akan otomatis membuat stream dan sink serta beberapa method untuk melakukan kontrol terhadap event dan fitur-fitur yang ada di dalamnya.<p>
+
+Anda dapat membayangkan stream sebagai pipa air yang mengalir searah, dari salah satu ujung Anda dapat mengisi data dan dari ujung lain data itu keluar. Anda dapat melihat konsep stream pada gambar diagram berikut ini.<p>
+
+
+<img src="https://jti-polinema.github.io/flutter-codelab/13-state-streams-bloc/img//34169bce391f6f.png"><p>
+
+Di Flutter, Anda dapat menggunakan StreamController untuk mengontrol aliran data stream. Sebuah StreamController memiliki sebuah properti bernama sink yang berguna untuk insert data. Sedangkan properti stream berguna untuk menerima atau keluarnya data dari StreamController tersebut.<p>
+
+Setelah Anda menyelesaikan praktikum 1, Anda dapat melanjutkan praktikum 2 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 1.<p>
+
+Pada codelab ini, kita akan menambah kode dari aplikasi stream di praktikum sebelumnya.
+
+### **1: Buka file stream.dart**
+Lakukan impor dengan mengetik kode ini.
+
+```dart
+import 'dart:async';
+```
+
+### **Langkah 2: Tambah class NumberStream**
+Tetap di file stream.dart tambah class baru seperti berikut.
+
+```dart
+class NumberStream{
+  
+}
+```
+
+### **Langkah 3: Tambah StreamController**
+Di dalam class NumberStream buatlah variabel seperti berikut.
+
+```dart
+final StreamController<int> controller = StreamController<int>();
+```
+
+### **Langkah 4: Tambah method addNumberToSink**
+Tetap di class NumberStream buatlah method ini
+
+```dart
+void addNumberToSink(int newNumber) {
+    controller.sink.add(newNumber);
+  }
+```
+
+### **Langkah 5: Tambah method close()**
+
+```dart
+close() {
+    controller.close();
+  }
+```
+
+### **Langkah 6: Buka main.dart**
+Ketik kode import seperti berikut
+
+```dart
+import 'dart:async';
+import 'dart:math';
+```
+
+### **Langkah 7: Tambah variabel**
+Di dalam class _StreamHomePageState ketik variabel berikut
+
+```dart
+int lastNumber = 0;
+  late StreamController numberStreamController;
+  late NumberStream numberStream;
+```
+
+### **Langkah 8: Edit initState()**
+
+```dart
+@override
+  void initState() {
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+    Stream stream = numberStreamController.stream;
+    stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
+    super.initState();
+  }
+```
+
+### **Langkah 9: Edit dispose()**
+
+```dart
+@override
+  void dispose() {
+    numberStreamController.close();
+    super.dispose();
+  }
+```
+
+### **10: Tambah method addRandomNumber()**
+
+```dart
+void addRandomNumber() {
+  Random random = Random();
+  int myNum = random.nextInt(10);
+  numberStream.addNumberToSink(myNum);
+}
+```
+
+### **Langkah 11: Edit method build()**
+
+```dart
+body: SizedBox(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(lastNumber.toString()),
+            ElevatedButton(
+              onPressed: () => addRandomNumber(), 
+              child: Text('New Random Number'),
+              )
+          ],
+        ),
+      ),
+```
+
+### **Langkah 12: Run**
+Lakukan running pada aplikasi Flutter Anda, maka akan terlihat seperti gambar berikut.
+
+>Soal 6<p>
+>Jelaskan maksud kode langkah 8 dan 10 tersebut!<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README.<p>
+>Lalu lakukan commit dengan pesan "W13: Jawaban Soal 6".<p>
+
+>Jawab<p>
+>Secara keseluruhan, langkah 8 dan 10 ini menciptakan dan mengelola stream angka dengan menggunakan NumberStream, menginisialisasi stream controller, mendengarkan perubahan pada stream, dan menambahkan angka acak ke dalam stream.<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal6jp.jpeg"></th>
+        <th><img src="docs/soal6gf.gif"></th>
+    </tr>
+</table>
 
