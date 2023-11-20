@@ -410,3 +410,49 @@ Lakukan running pada aplikasi Flutter Anda, maka akan terlihat seperti gambar be
     </tr>
 </table>
 
+### **Langkah 13: Buka stream.dart**
+Tambahkan method berikut ini.
+
+```dart
+addError() {
+    controller.sink.addError('error');
+  }
+```
+
+### **Langkah 14: Buka main.dart**
+Tambahkan method onError di dalam class StreamHomePageState pada method listen di fungsi initState() seperti berikut ini.
+
+```dart
+stream.listen((event){
+    setState((){
+      lastNumber = event;
+    });
+  }).onError((error){
+    setState((){
+      lastNumber = -1;
+    });
+  });
+
+```
+
+### **Langkah 15: Edit method addRandomNumber()**
+Lakukan comment pada dua baris kode berikut, lalu ketik kode seperti berikut ini.
+
+```dart
+void addRandomNumber() {
+    Random random = Random();
+    // int myNum = random.nextInt(10);
+    // numberStream.addNumberToSink(myNum);
+    numberStream.addError();
+  }
+```
+
+>Soal 7<p>
+>Jelaskan maksud kode langkah 13 sampai 15 tersebut!<p>
+>Kembalikan kode seperti semula pada Langkah 15, comment addError() agar Anda dapat melanjutkan ke praktikum 3 berikutnya.<p>
+>Lalu lakukan commit dengan pesan "W13: Jawaban Soal 7".<p>
+
+>Jawab<p>
+>**Pada langkah 13**Pada langkah ini, Anda menambahkan sebuah metode bernama addError() ke dalam objek NumberStream yang mungkin merupakan suatu kelas yang mengelola stream angka. Metode ini bertujuan untuk menambahkan pesan error ke dalam sink (tempat penyimpanan) stream dengan menggunakan controller.sink.addError('error').<p>
+>**Pada langkah 14**Pada langkah ini, Anda menambahkan metode onError ke dalam fungsi listen yang mendengarkan perubahan pada stream dalam fungsi initState(). Ketika terjadi error pada stream, fungsi onError akan dipanggil, dan Anda mengupdate nilai lastNumber menjadi -1. Ini memberikan cara untuk menangani kesalahan yang mungkin terjadi pada stream.<p>
+>**Pada langkah 15**Pada langkah ini, Anda melakukan komentar pada dua baris kode yang awalnya digunakan untuk menambahkan angka acak ke dalam stream. Ini berarti bahwa metode addRandomNumber() sekarang tidak melakukan apa pun, dan angka tidak lagi ditambahkan ke dalam stream.<p>

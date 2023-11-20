@@ -58,6 +58,15 @@ class _StreamHomePageState extends State<StreamHomePage> {
       });
     });
     super.initState();
+    stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    }).onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
   }
 
   Widget build(BuildContext context) {
@@ -73,9 +82,9 @@ class _StreamHomePageState extends State<StreamHomePage> {
           children: [
             Text(lastNumber.toString()),
             ElevatedButton(
-              onPressed: () => addRandomNumber(), 
+              onPressed: () => addRandomNumber(),
               child: Text('New Random Number'),
-              )
+            )
           ],
         ),
       ),
@@ -92,5 +101,6 @@ class _StreamHomePageState extends State<StreamHomePage> {
     Random random = Random();
     int myNum = random.nextInt(10);
     numberStream.addNumberToSink(myNum);
+    // numberStream.addError();
   }
 }
