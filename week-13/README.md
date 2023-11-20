@@ -230,3 +230,25 @@ Lakukan running pada aplikasi Flutter Anda, maka akan terlihat berubah warna bac
     </tr>
 </table>
 
+### **Langkah 13: Ganti isi method changeColor()**
+Anda boleh comment atau hapus kode sebelumnya, lalu ketika kode seperti berikut.
+
+```dart
+colorStream.getColors().listen((eventColor) {
+      setState(() {
+        bgColor = eventColor;
+      });
+    });
+```
+
+>Soal 5<p>
+>Jelaskan perbedaan menggunakan listen dan await for (langkah 9) !<p>
+>Lakukan commit hasil jawaban Soal 5 dengan pesan "W13: Jawaban Soal 5"<p>
+
+>Jawab<p>
+>Kedua pendekatan tersebut, yakni menggunakan await for dan listen, berfungsi untuk mendengarkan perubahan pada stream, tetapi terdapat perbedaan utama dalam cara mereka berinteraksi dengan stream.<p>
+>- await for mengharapkan fungsi yang dilabeli async, sementara listen dapat digunakan di dalam atau di luar fungsi yang diberi label async.<p>
+>- await for digunakan untuk membuat loop yang akan terus menunggu dan mendengarkan stream, sementara listen digunakan untuk menetapkan fungsi callback yang akan dipanggil setiap kali ada perubahan pada stream.<p>
+>
+>Dalam kedua kasus, tujuannya tetap sama, yaitu merespons perubahan pada stream dan memperbarui UI melalui setState ketika ada perubahan warna. Pilihan antara keduanya tergantung pada kebutuhan dan struktur kode aplikasi Flutter Anda.
+
