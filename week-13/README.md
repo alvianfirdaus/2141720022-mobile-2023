@@ -161,3 +161,72 @@ yield* Stream.periodic(
 >Jawab<p>
 >Pada Dart, penggunaan yield* digunakan dalam konteks pengembalian nilai dari suatu fungsi yang juga merupakan generator. Generator adalah fungsi yang menghasilkan serangkaian nilai secara berurutan dan dapat dihentikan atau dilanjutkan.<p>
 >Jadi, secara keseluruhan, kode tersebut membuat sebuah stream yang menghasilkan warna dari sebuah array colors secara berulang setiap detik. Kode tersebut hanya mendefinisikan stream dan tidak mencetak atau menggunakan stream tersebut. Untuk menggunakan stream tersebut, Anda dapat menggabungkannya dengan operator .listen atau menggunakannya dalam blok await for jika berada dalam konteks async.<p>
+
+### **Langkah 7: Buka main.dart**
+Ketik kode impor file ini pada file main.dart
+
+```dart
+import 'stream.dart';
+```
+
+### **Langkah 8: Tambah variabel**
+Ketik dua properti ini di dalam class _StreamHomePageState
+
+```dart
+Color bgColor = Colors.blueGrey;
+  late ColorStream colorStream;
+```
+
+### **Langkah 9: Tambah method changeColor()**
+Tetap di file main, Ketik kode seperti berikut
+
+```dart
+void changeColor() async {
+    await for (var eventColor in colorStream.getColors()) {
+      setState(() {
+        bgColor = eventColor;
+      });
+    }
+  }
+```
+
+### **Langkah 10: Lakukan override initState()**
+Ketika kode seperti berikut
+
+```dart
+@override
+  void initState() {
+    super.initState();
+    colorStream = ColorStream();
+    changeColor();
+  }
+```
+
+### **Langkah 11: Ubah isi Scaffold()**
+Sesuaikan kode seperti berikut.
+
+```dart
+return Scaffold(
+      appBar: AppBar(
+        title: const Text ('Stream Alvian'),
+      ),
+      body: Container(
+        decoration: BoxDecoration(color: bgColor),
+      ));
+```
+
+### **Langkah 12: Run**
+Lakukan running pada aplikasi Flutter Anda, maka akan terlihat berubah warna background setiap detik.
+
+>Soal 4<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README.<p>
+>Lakukan commit hasil jawaban Soal 4 dengan pesan "W13: Jawaban Soal 4"<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal4bjp.jpeg"></th>
+        <th><img src="docs/soal4ajp.jpeg"></th>
+        <th><img src="docs/soal4gf.gif"></th>
+    </tr>
+</table>
+
