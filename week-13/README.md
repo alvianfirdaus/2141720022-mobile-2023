@@ -133,3 +133,31 @@ class ColorStream {
 
 >**Jawab**<p>
 ><img src="docs/soal2jp.PNG"><p>
+
+### **Langkah 5: Tambah method getColors()**
+Di dalam class ColorStream ketik method seperti kode berikut. Perhatikan tanda bintang di akhir keyword async* (ini digunakan untuk melakukan Stream data)
+
+```dart
+Stream<Color> getColors() async* {
+}
+```
+
+### **Langkah 6: Tambah perintah yield**
+Tambahkan kode berikut ini.
+
+```dart
+yield* Stream.periodic(
+  const Duration(seconds: 1), (int t) {
+    int index = t % colors.length;
+    return colors[index];
+});
+```
+
+>Soal 3<p>
+>Jelaskan fungsi keyword yield* pada kode tersebut!<p>
+>Apa maksud isi perintah kode tersebut?<p>
+>Lakukan commit hasil jawaban Soal 3 dengan pesan "W13: Jawaban Soal 3"<p>
+
+>Jawab<p>
+>Pada Dart, penggunaan yield* digunakan dalam konteks pengembalian nilai dari suatu fungsi yang juga merupakan generator. Generator adalah fungsi yang menghasilkan serangkaian nilai secara berurutan dan dapat dihentikan atau dilanjutkan.<p>
+>Jadi, secara keseluruhan, kode tersebut membuat sebuah stream yang menghasilkan warna dari sebuah array colors secara berulang setiap detik. Kode tersebut hanya mendefinisikan stream dan tidak mencetak atau menggunakan stream tersebut. Untuk menggunakan stream tersebut, Anda dapat menggabungkannya dengan operator .listen atau menggunakannya dalam blok await for jika berada dalam konteks async.<p>
