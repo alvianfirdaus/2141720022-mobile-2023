@@ -892,3 +892,188 @@ Hasilnya, setiap detik akan tampil angka baru seperti berikut.
         <th><img src="docs/soal12gf.gif"></th>
     </tr>
 </table>
+
+
+<br>
+
+-----
+
+<br>
+
+### **Praktikum 7: BLoC Pattern**
+Ketika menggunakan pola BLoC, maka segalanya merupakan stream event. BLoC atau Business Logic Component adalah lapisan antara semua sumber data dan UI yang mengonsumsi data itu. Contohnya seperti sumber data dari HTTP layanan web servis atau JSON dari sebuah basis data.<p>
+
+Sebuah BLoC menerima stream data dari sumbernya, proses itu membutuhkan logika bisnis Anda, dan return stream data ke subscriber-nya. Perhatikan diagram pola kerja BLoC berikut ini.<p>
+
+<img src="https://jti-polinema.github.io/flutter-codelab/13-state-streams-bloc/img//228c7b30c7e22075.png"><p>
+
+Alasan utama menggunakan BLoC adalah memisahkan logika bisnis aplikasi dengan presentasi UI pada widget, terutama akan sangat berguna ketika aplikasi Anda mulai semakin kompleks dan membutuhkan akses state di berbagai tempat. Hal ini akan membuat semakin mudah dalam menggunakan kode Anda, pada beberapa bagian di aplikasi atau bahkan berbeda aplikasi. Selain itu, BLoC secara independen berdiri sendiri dengan UI, sehingga sangat mudah dilakukan isolasi dalam proses testing.<p>
+
+Pada praktikum codelab ini, Anda akan membuat aplikasi sederhana menggunakan BLoC, namun Anda dapat dengan mudah mengembangkannya untuk aplikasi yang lebih besar ruang lingkupnya.<p>
+
+Setelah Anda menyelesaikan praktikum 6, Anda dapat melanjutkan praktikum 7 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 6.<p>
+
+### **Langkah 1: Buat Project baru**
+Buatlah sebuah project flutter baru dengan nama bloc_random_nama (beri nama panggilan Anda) di folder week-13/src/ repository GitHub Anda. Lalu buat file baru di folder lib dengan nama random_bloc.dart
+
+### **Langkah 2: Isi kode random_bloc.dart**
+Ketik kode impor berikut ini.
+
+```dart
+import 'dart:async';
+import 'dart:math';
+```
+
+### **Langkah 3: Buat class RandomNumberBloc()**
+
+```dart
+class RandomNumberBloc {}
+```
+
+### **Langkah 4: Buat variabel StreamController**
+Di dalam class RandomNumberBloc() ketik variabel berikut ini
+
+```dart
+  // StreamController for input events
+  final _generateRandomController = StreamController<void>();
+  // StreamController for output
+  final _randomNumberController = StreamController<int>();
+  // Input Sink
+  Sink<void> get generateRandom => _generateRandomController.sink;
+  // Output Stream
+  Stream<int> get randomNumber => _randomNumberController.stream;
+  // _secondStreamController.sink;x`
+```
+
+### **Langkah 5: Buat constructor**
+
+```dart
+RandomNumberBloc() {
+    _generateRandomController.stream.listen((_) {
+      final random = Random().nextInt(10);
+      _randomNumberController.sink.add(random);
+    });
+  }
+```
+
+### **Langkah 6: Buat method dispose()**
+
+```dart
+void dispose() {
+    _generateRandomController.close();
+    _randomNumberController.close();
+  }
+```
+
+### **Langkah 7: Edit main.dart**
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const RandomScreen(),
+    );
+  }
+}
+```
+
+### **Langkah 8: Buat file baru random_screen.dart**
+Di dalam folder lib project Anda, buatlah file baru ini.
+
+### **Langkah 9: Lakukan impor material dan random_bloc.dart**
+Ketik kode ini di file baru random_screen.dart
+
+```dart
+import 'package:bloc_random_alvian/random_bloc.dart';
+import 'package:flutter/material.dart';
+```
+
+### **Langkah 10: Buat StatefulWidget RandomScreen**
+Buatlah di dalam file random_screen.dart
+
+### **Langkah 11: Buat variabel**
+Ketik kode ini di dalam class _RandomScreenState
+
+```dart
+final _bloc = RandomNumberBloc();
+```
+
+### **Langkah 12: Buat method dispose()**
+Ketik kode ini di dalam class _StreamHomePageState
+
+```dart
+@override
+  void dispose() {
+    _bloc.dispose();
+    super.dispose();
+  }
+```
+
+### **Langkah 13: Edit method build()**
+Ketik kode ini di dalam class _StreamHomePageState
+
+```dart
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Random Number')),
+      body: Center(
+        child: StreamBuilder<int>(
+          stream: _bloc.randomNumber,
+          initialData: 0,
+          builder: (context, snapshot) {
+            return Text(
+              'Random Number: ${snapshot.data}',
+              style: const TextStyle(fontSize: 24),
+            );
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _bloc.generateRandom.add(null),
+        child: const Icon(Icons.refresh),
+      ),
+    );
+  }
+```
+
+Run aplikasi, maka Anda akan melihat angka acak antara angka 0 sampai 9 setiap kali menekan tombol FloactingActionButton.
+
+>Soal 13<p>
+>Jelaskan maksud praktikum ini ! Dimanakah letak konsep pola BLoC-nya ?<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README.<p>
+>Lalu lakukan commit dengan pesan "W13: Jawaban Soal 13".<p>
+
+>Jawab<p>
+>**RandomNumberBloc Class:**<p>
+>RandomNumberBloc adalah implementasi BLoC. Ini memiliki dua StreamController: satu untuk mengontrol input events (_generateRandomController), dan satu untuk mengontrol output (_randomNumberController). _generateRandomController digunakan untuk mengirim peristiwa yang akan memicu pembangkitan nomor acak. Sedangkan _randomNumberController mengontrol stream output yang berisi nomor acak yang dihasilkan.<p>
+>
+>**MyHomePage Class:**<p>
+>MyHomePage adalah contoh antarmuka pengguna yang sederhana yang tidak langsung terlibat dengan logika bisnis. Ini tidak mengandung logika khusus terkait BLoC. Namun, dalam pengembangan aplikasi yang lebih kompleks, logika bisnis dapat dipindahkan ke BLoC untuk menjaga kesatuan dan pemisahan tanggung jawab.<p>
+>
+>**RandomScreen Class:**<p>
+>RandomScreen adalah contoh antarmuka pengguna yang menggunakan RandomNumberBloc. State dari widget ini diatur oleh stream yang dikeluarkan oleh _bloc.randomNumber. Setiap kali peristiwa dikirim melalui _bloc.generateRandom, nomor acak baru dihasilkan dan diperbarui di UI. Dengan memisahkan logika bisnis ke dalam RandomNumberBloc, antarmuka pengguna dapat fokus pada tampilan dan respons terhadap perubahan state.<p>
+>
+>**Pemanggilan BLoC di main.dart:**<p>
+>BLoC (RandomNumberBloc) diinisialisasi dan dimiliki oleh _RandomScreenState. Pemanggilan _bloc.generateRandom.add(null) pada tombol tindakan antarmuka pengguna memicu pembangkitan nomor acak melalui BLoC.<p>
+
+
+<table>
+    <tr>
+        <th><img src="docs/soal13jp.jpeg"></th>
+        <th><img src="docs/soal13gf.gif"></th>
+    </tr>
+</table>
+
+TERIMA KASIH
