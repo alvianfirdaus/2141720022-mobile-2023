@@ -528,3 +528,137 @@ Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bi
         <th><img src="docs/soal8gf.gif"></th>
     </tr>
 </table>
+
+<br>
+
+-----
+
+<br>
+
+### **Praktikum 4: Subscribe ke stream events**
+Dari praktikum sebelumnya, Anda telah menggunakan method listen mendapatkan nilai dari stream. Ini akan menghasilkan sebuah Subscription. Subscription berisi method yang dapat digunakan untuk melakukan listen pada suatu event dari stream secara terstruktur.<p>
+
+Pada praktikum 4 ini, kita akan gunakan Subscription untuk menangani event dan error dengan teknik praktik baik (best practice), dan menutup Subscription tersebut.<p>
+
+Setelah Anda menyelesaikan praktikum 3, Anda dapat melanjutkan praktikum 4 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 3.<p>
+
+### **Langkah 1: Tambah variabel**
+Tambahkan variabel berikut di class _StreamHomePageState
+
+```dart
+late StreamSubscription subscription;
+```
+
+### **Langkah 2: Edit initState()**
+Edit kode seperti berikut ini.
+
+```dart
+@override
+  void initState() {
+    super.initState();
+    numberStream = NumberStream();
+    numberStreamController = numberStream.controller;
+    Stream stream = numberStreamController.stream;
+    subscription = stream.listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    });
+    super.initState();
+  }
+```
+
+### **Langkah 3: Tetap di initState()**
+Tambahkan kode berikut ini.
+
+```dart
+subscription.onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
+```
+
+### **Langkah 4: Tambah properti onDone()**
+Tambahkan dibawahnya kode ini setelah onError
+
+```dart
+subscription.onDone(() {
+      print('OnDone was called');
+    });
+```
+
+### **Langkah 5: Tambah method baru**
+Ketik method ini di dalam class _StreamHomePageState
+
+```dart
+void stopStream() {
+    numberStreamController.close();
+  }
+```
+
+### **Langkah 6: Pindah ke method dispose()**
+Jika method dispose() belum ada, Anda dapat mengetiknya dan dibuat override. Ketik kode ini didalamnya.
+
+```dart
+subscription.cancel();
+```
+
+### **Langkah 7: Pindah ke method build()**
+Tambahkan button kedua dengan isi kode seperti berikut ini.
+
+```dart
+ElevatedButton(
+              onPressed: () => stopStream(),
+              child: const Text('Stop Subscription'),
+            )
+```
+
+### **Langkah 8: Edit method addRandomNumber()**
+Edit kode seperti berikut ini.
+
+```dart
+void addRandomNumber() {
+    Random random = Random();
+    int myNum = random.nextInt(10);
+    if (!numberStreamController.isClosed) {
+      numberStream.addNumberToSink(myNum);
+    } else {
+      setState(() {
+        lastNumber = -1;
+      });
+    }
+  }
+```
+
+### **Langkah 9: Run**
+Anda akan melihat dua button seperti gambar berikut.
+
+### **Langkah 10: Tekan button ‘Stop Subscription**
+Anda akan melihat pesan di Debug Console seperti berikut.<p>
+<img src="https://jti-polinema.github.io/flutter-codelab/13-state-streams-bloc/img//b051d83d7e5d963a.png">
+
+
+>Soal 9<p>
+>Jelaskan maksud kode langkah 2, 6 dan 8 tersebut!<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README.<p>
+>Lalu lakukan commit dengan pesan "W13: Jawaban Soal 9".<p>
+
+
+>Jawab<p>
+>Langkah 2<p>
+>Pada langkah ini, Anda sedang mengedit metode initState() dalam framework Flutter. initState() adalah metode yang dipanggil setelah widget telah diinisialisasi, dan ini sering digunakan untuk melakukan konfigurasi awal dan memulai sumber daya yang diperlukan.<p>
+>Langkah 6<p>
+>Langkah ini menunjukkan bagaimana menangani pembuangan (disposing) sumber daya yang digunakan oleh widget. Metode dispose() dipanggil ketika widget dihapus dari pohon widget.<p>
+>Langkah 8<p>
+>Dengan langkah ini, memberikan fungsionalitas untuk menambahkan angka acak ke aliran sesuai dengan kondisi-kondisi tertentu, dan Anda menangani dengan bijak situasi di mana kontroler aliran sudah ditutup.
+
+
+<table>
+    <tr>
+        <th><img src="docs/soal9jp.jpeg"></th>
+        <th><img src="docs/soal9gf.gif"></th>
+    </tr>
+</table>
