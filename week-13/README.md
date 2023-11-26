@@ -754,7 +754,7 @@ Tekan button ‘New Random Number' beberapa kali, maka akan tampil teks angka te
 <table>
     <tr>
         <th><img src="docs/soal11jp.jpeg"></th>
-        <th><img src="docs/soal11gf.jpeg"></th>
+        <th><img src="docs/soal11gf.gif"></th>
     </tr>
 </table>
 
@@ -763,6 +763,7 @@ Tekan button ‘New Random Number' beberapa kali, maka akan tampil teks angka te
 ----
 
 <br>
+
 ### **Praktikum 6: StreamBuilder**
 StreamBuilder adalah sebuah widget untuk melakukan listen terhadap event dari stream. Ketika sebuah event terkirim, maka akan dibangun ulang semua turunannya. Seperti halnya widget FutureBuilder pada pertemuan pekan lalu, StreamBuilder berguna untuk membangun UI secara reaktif yang diperbarui setiap data baru tersedia.<p>
 
@@ -777,36 +778,117 @@ Buatlah sebuah project flutter baru dengan nama streambuilder_nama (beri nama pa
 ### **Langkah 2: Buat file baru stream.dart**
 Ketik kode ini
 
+```dart
+class NumberStream {}
+```
 
 ### **Langkah 3: Tetap di file stream.dart**
 Ketik kode seperti berikut.
 
+```dart
+import 'dart:math';
 
+class NumberStream {
+  Stream<int> getNumbers() async* {
+    yield* Stream.periodic(const Duration(seconds: 1), (int t) {
+      Random random = Random();
+      int myNum = random.nextInt(10);
+      return myNum;
+    });
+  }
+}
+```
 
 ### **Langkah 4: Edit main.dart**
 Ketik kode seperti berikut ini.
 
+```dart
+import 'package:flutter/material.dart';
+import 'stream.dart';
+import 'dart:async';
 
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Stream',
+      theme: ThemeData(
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 200, 30, 212)),
+      ),
+      home: const StreamHomePage(),
+    );
+  }
+}
+```
 
 ### **Langkah 5: Tambah variabel**
 Di dalam class _StreamHomePageState, ketika variabel ini.
 
+```dart
+ late Stream<int> numberStream;
+```
 
 ### **Langkah 6: Edit initState()**
 Ketik kode seperti berikut.
 
+```dart
+@override
+  void initState() {
+    numberStream = NumberStream().getNumbers();
+    super.initState();
+  }
+```
 
 ### **Langkah 7: Edit method build()**
 
-
-
+```dart
+body: StreamBuilder(
+        stream: numberStream,
+        initialData: 0,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            print('Error!');
+          }
+          if (snapshot.hasData) {
+            return Center(
+              child: Text(
+                snapshot.data.toString(),
+                style: const TextStyle(fontSize: 96),
+              ),
+            );
+          } else {
+            return const SizedBox.shrink();
+          }
+        },
+      ),
+```
 
 ### **Langkah 8: Run**
 Hasilnya, setiap detik akan tampil angka baru seperti berikut.
-
-
 
 >Soal 12<p>
 >Jelaskan maksud kode pada langkah 3 dan 7 !<p>
 >Capture hasil praktikum Anda berupa GIF dan lampirkan di README.<p>
 >Lalu lakukan commit dengan pesan "W13: Jawaban Soal 12".<p>
+
+>Jawab<p>
+>Langkah 3<p>
+>melibatkan pembuatan class NumberStream(), yang mencakup metode getNumbers() untuk menghasilkan stream yang berisi angka-angka acak. Stream ini diperbarui setiap 1 detik.
+
+>Sementara itu, Langkah 7 menunjukkan penggunaan kode untuk membuat antarmuka pengguna (UI) yang dapat menampilkan nilai dari stream secara real-time. Untuk mencapai ini, digunakan StreamBuilder, yang secara otomatis memperbarui antarmuka setiap kali ada perubahan dalam stream. Perubahan ini dapat berupa perubahan nilai atau munculnya error. Dalam kasus terjadinya error, pesan 'Error!' akan ditampilkan. Jika tidak ada error dan data diterima dari stream, angka acak akan ditampilkan dengan ukuran font setara dengan 96. Namun, jika tidak ada data yang diterima, antarmuka akan menampilkan widget kosong.<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal12jp.jpeg"></th>
+        <th><img src="docs/soal12gf.gif"></th>
+    </tr>
+</table>
