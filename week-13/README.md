@@ -456,3 +456,75 @@ void addRandomNumber() {
 >**Pada langkah 13**Pada langkah ini, Anda menambahkan sebuah metode bernama addError() ke dalam objek NumberStream yang mungkin merupakan suatu kelas yang mengelola stream angka. Metode ini bertujuan untuk menambahkan pesan error ke dalam sink (tempat penyimpanan) stream dengan menggunakan controller.sink.addError('error').<p>
 >**Pada langkah 14**Pada langkah ini, Anda menambahkan metode onError ke dalam fungsi listen yang mendengarkan perubahan pada stream dalam fungsi initState(). Ketika terjadi error pada stream, fungsi onError akan dipanggil, dan Anda mengupdate nilai lastNumber menjadi -1. Ini memberikan cara untuk menangani kesalahan yang mungkin terjadi pada stream.<p>
 >**Pada langkah 15**Pada langkah ini, Anda melakukan komentar pada dua baris kode yang awalnya digunakan untuk menambahkan angka acak ke dalam stream. Ini berarti bahwa metode addRandomNumber() sekarang tidak melakukan apa pun, dan angka tidak lagi ditambahkan ke dalam stream.<p>
+
+<br>
+
+-----
+
+<br>
+
+### **Praktikum 3: Injeksi data ke streams**
+Skenario yang umum dilakukan adalah melakukan manipulasi atau transformasi data stream sebelum sampai pada UI end user. Hal ini sangatlah berguna ketika Anda membutuhkan untuk filter data berdasarkan kondisi tertentu, melakukan validasi data, memodifikasinya, atau melakukan proses lain yang memicu beberapa output baru. Contohnya melakukan konversi angka ke string, membuat sebuah perhitungan, atau menghilangkan data yang berulang terus tampil.<p>
+
+Pada praktikum 3 ini, Anda akan menggunakan StreamTransformers ke dalam stream untuk melakukan map dan filter data.<p>
+
+Setelah Anda menyelesaikan praktikum 2, Anda dapat melanjutkan praktikum 3 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 2.<p>
+
+### **Langkah 1: Buka main.dart**
+Tambahkan variabel baru di dalam class _StreamHomePageState
+
+```dart
+late StreamTransformer transformer;
+```
+
+### **Langkah 2: Tambahkan kode ini di initState**
+
+```dart
+transformer = StreamTransformer<int, int>.fromHandlers(
+        handleData: (value, sink) {
+          sink.add(value * 10);
+        },
+        handleError: (error, trace, sink) {
+          sink.add(-1);
+        },
+        handleDone: (sink) => sink.close());
+```
+
+### **Langkah 3: Tetap di initState**
+Lakukan edit seperti kode berikut.
+
+```dart
+stream.transform(transformer).listen((event) {
+      setState(() {
+        lastNumber = event;
+      });
+    }).onError((error) {
+      setState(() {
+        lastNumber = -1;
+      });
+    });
+    super.initState();
+```
+
+### **Langkah 4: Run**
+Terakhir, run atau tekan F5 untuk melihat hasilnya jika memang belum running. Bisa juga lakukan hot restart jika aplikasi sudah running. Maka hasilnya akan seperti gambar berikut ini. Anda akan melihat tampilan angka dari 0 hingga 90.
+
+>Soal 8<p>
+>Jelaskan maksud kode langkah 1-3 tersebut!<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README.<p>
+>Lalu lakukan commit dengan pesan "W13: Jawaban Soal 8".<p>
+
+>Jawab<p>
+>**Langkah 1**Pada langkah ini, Anda menambahkan variabel transformer ke dalam kelas _StreamHomePageState. Variabel ini memiliki tipe StreamTransformer, yang merupakan objek yang dapat mengubah (transform) nilai di dalam stream.<p>
+>**Langkah2**Pada langkah ini, Anda membuat objek StreamTransformer dengan menggunakan metode fromHandlers. Objek ini digunakan untuk mengubah nilai di dalam stream. Dalam kasus ini, nilai diubah dengan mengalikan setiap nilai dengan 10. Selain itu, terdapat penanganan error yang menghasilkan nilai -1, dan penanganan ketika stream selesai.<p>
+>**Langkah3**Pada langkah ini, Anda menggunakan transform pada stream untuk menerapkan transformasi yang telah ditentukan oleh transformer. Setiap nilai yang masuk ke dalam stream akan dikalikan dengan 10 sesuai dengan logika yang didefinisikan dalam transformer. Selanjutnya, Anda mendengarkan perubahan pada stream seperti biasa dan memperbarui UI melalui setState.<p>
+
+
+<table>
+    <tr>
+        <th><img src="docs/soal8jp.jpeg"></th>
+        <th><img src="docs/soal8gf.gif"></th>
+    </tr>
+</table>
