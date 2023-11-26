@@ -662,3 +662,151 @@ Anda akan melihat pesan di Debug Console seperti berikut.<p>
         <th><img src="docs/soal9gf.gif"></th>
     </tr>
 </table>
+
+
+<br>
+
+----
+
+<br>
+
+### **Praktikum 5: Multiple stream subscriptions**
+Secara default, stream hanya bisa digunakan untuk satu subscription. Jika Anda mencoba untuk melakukan subscription yang sama lebih dari satu, maka akan terjadi error. Untuk menangani hal itu, tersedia broadcast stream yang dapat digunakan untuk multiple subscriptions. Pada praktikum ini, Anda akan mencoba untuk melakukan multiple stream subscriptions.<p>
+
+Setelah Anda menyelesaikan praktikum 4, Anda dapat melanjutkan praktikum 5 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 4.
+
+### **Langkah 1: Buka file main.dart**
+Ketik variabel berikut di class _StreamHomePageState
+
+```dart
+ late StreamSubscription subscription2;
+  String values = '';
+```
+
+### **Langkah 2: Edit initState()**
+Ketik kode seperti berikut.
+
+```dart
+subscription = stream.listen((event) {
+      setState(() {
+        // lastNumber = event;
+        values += '$event - ';
+      });
+    });
+    super.initState();
+
+    subscription2 = stream.listen((event) {
+      setState(() {
+        // lastNumber = event;
+        values += '$event - ';
+      });
+    });
+```
+
+### **Langkah 3: Run**
+Lakukan run maka akan tampil error seperti gambar berikut.
+
+
+>Soal 10<p>
+>Jelaskan mengapa error itu bisa terjadi ?<p>
+
+>Jawab<p>
+>Kesalahan tersebut terjadi ketika mencoba untuk menambahkan atau membuat dua langganan pada stream yang sama, tanpa membatalkan langganan sebelumnya. Hal tersebut terjadi ketika inisialisasi langganan2 pada metode initState() karena sudah ada inisialisasi langganan untuk menangani stream yang sama pada satu waktu.<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal10jp.jpeg"></th>
+    </tr>
+</table>
+
+### **Langkah 4: Set broadcast stream<p>**
+Ketik kode seperti berikut di method initState()<p>
+
+```dart
+ Stream stream = numberStreamController.stream.asBroadcastStream();
+```
+
+### **Langkah 5: Edit method build()**
+Tambahkan text seperti berikut
+
+```dart
+hild: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(values),
+])
+```
+
+### **Langkah 6: Run**
+Tekan button ‘New Random Number' beberapa kali, maka akan tampil teks angka terus bertambah sebanyak dua kali.
+
+>Soal 11<p>
+>Jelaskan mengapa hal itu bisa terjadi ?<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README.<p>
+>Lalu lakukan commit dengan pesan "W13: Jawaban Soal 10,11".<p>
+
+>Jawab<p>
+>Saat tombol "New Random Number" ditekan, maka akan menghasilkan dua angka random yang sama. Angka-angka tersebut merupakan output dari stream yang dipanggil oleh objek subscription dan subscription2. Stream tersebut akan mengembalikan nilai berupa event (angka random) yang dipisahkan dengan tanda "-". Saat tombol "Stop Stream" ditekan, maka akan menghentikan langganan terhadap stream. Hal ini menyebabkan stream tidak lagi bisa mengeluarkan output, meskipun tombol "New Random Number" ditekan.<p>
+
+<table>
+    <tr>
+        <th><img src="docs/soal11jp.jpeg"></th>
+        <th><img src="docs/soal11gf.jpeg"></th>
+    </tr>
+</table>
+
+<br>
+
+----
+
+<br>
+### **Praktikum 6: StreamBuilder**
+StreamBuilder adalah sebuah widget untuk melakukan listen terhadap event dari stream. Ketika sebuah event terkirim, maka akan dibangun ulang semua turunannya. Seperti halnya widget FutureBuilder pada pertemuan pekan lalu, StreamBuilder berguna untuk membangun UI secara reaktif yang diperbarui setiap data baru tersedia.<p>
+
+Setelah Anda menyelesaikan praktikum 5, Anda dapat melanjutkan praktikum 6 ini. Selesaikan langkah-langkah praktikum berikut ini menggunakan editor Visual Studio Code (VS Code) atau Android Studio atau code editor lain kesukaan Anda. Jawablah di laporan praktikum Anda pada setiap soal yang ada di beberapa langkah praktikum ini.<p>
+
+>**Perhatian:** Diasumsikan Anda telah berhasil menyelesaikan Praktikum 5.<p>
+
+### **Langkah 1: Buat Project Baru**
+Buatlah sebuah project flutter baru dengan nama streambuilder_nama (beri nama panggilan Anda) di folder week-13/src/ repository GitHub Anda.
+
+
+### **Langkah 2: Buat file baru stream.dart**
+Ketik kode ini
+
+
+### **Langkah 3: Tetap di file stream.dart**
+Ketik kode seperti berikut.
+
+
+
+### **Langkah 4: Edit main.dart**
+Ketik kode seperti berikut ini.
+
+
+
+### **Langkah 5: Tambah variabel**
+Di dalam class _StreamHomePageState, ketika variabel ini.
+
+
+### **Langkah 6: Edit initState()**
+Ketik kode seperti berikut.
+
+
+### **Langkah 7: Edit method build()**
+
+
+
+
+### **Langkah 8: Run**
+Hasilnya, setiap detik akan tampil angka baru seperti berikut.
+
+
+
+>Soal 12<p>
+>Jelaskan maksud kode pada langkah 3 dan 7 !<p>
+>Capture hasil praktikum Anda berupa GIF dan lampirkan di README.<p>
+>Lalu lakukan commit dengan pesan "W13: Jawaban Soal 12".<p>
